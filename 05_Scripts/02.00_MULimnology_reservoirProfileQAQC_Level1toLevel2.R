@@ -272,7 +272,7 @@ for(fileIndex in 1:length(Level1_files)){
   qaqc2<-do.call(bind_rows, List_qaqc1)%>%
           dplyr::select(-depth_m)%>% #drop depth 
           rename(depth_m=verticalPosition_m)%>% #make depth_m into vertical position just for easier understanding
-          dplyr::select(MULakeNumber,date,dateTime,depth_m,temp_degC,doConcentration_mgpL,doSaturation_percent,chlorophyll_RFU,phycocyaninBGA_RFU,turbidity_FNU,salinity_psu,specificConductivity_uSpcm,tds_mgpL,orp_mV,pH,latitude,longitude,altitude_m,barometerAirHandheld_mbars)%>%
+          dplyr::select(MULakeNumber,date,dateTime,depth_m,temp_degC,doConcentration_mgpL,doSaturation_percent,chlorophyll_RFU,phycocyaninBGA_RFU,phycoerythrinTAL_RFU,turbidity_FNU,salinity_psu,specificConductivity_uSpcm,tds_mgpL,orp_mV,pH,latitude,longitude,altitude_m,barometerAirHandheld_mbars)%>%
           mutate(dateTime=as.character(dateTime)) #convert dateTime to character to preserve the formatting
 
 #Export the level2 file####
