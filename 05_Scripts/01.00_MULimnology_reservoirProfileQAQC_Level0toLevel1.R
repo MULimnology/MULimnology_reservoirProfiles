@@ -132,6 +132,7 @@ for(fileIndex in 1:length(Level0_files)){
                                      Turbidity.FNU=if("Turbidity.FNU" %in% names(.)){Turbidity.FNU}else{if("FNU" %in% names(.)){FNU}else{if("Turb" %in% names(.)){Turb}else{NA}}}, #Check if there is turbidity in different column headers
                                      Chlorophyll.RFU=if("Chlorophyll.RFU" %in% names(.)){Chlorophyll.RFU}else{if("Chl.RFU" %in% names(.)){Chl.RFU}else{if("CHL.rfu" %in% names(.)){CHL.rfu}else{NA}}}, #Check if there is chl rfu in different column headers
                                      BGA.PC.RFU=if("BGA.PC.RFU" %in% names(.)){BGA.PC.RFU }else{if("BGA-PC RFU" %in% names(.)){`BGA-PC RFU`}else{if("PC.rfu" %in% names(.)){PC.rfu}else{if("TAL.PC.RFU" %in% names(.)){TAL.PC.RFU}else{NA}}}}, #Check if there is BGA rfu in different column headers: RIGHT NOW THIS COLUMN NAME APPEARS TO BE THE SAME - COMMENTED IT OUT FOR NOW
+                                     TAL.PE.RFU=if("BGA.PE.RFU" %in% names(.)){BGA.PE.RFU }else{if("BGA-PE RFU" %in% names(.)){`BGA-PE RFU`}else{if("PE.rfu" %in% names(.)){PE.rfu}else{if("TAL.PE.RFU" %in% names(.)){TAL.PE.RFU}else{NA}}}}, #Check if there is Phycoerythrin rfu in different column headers: RIGHT NOW THIS COLUMN NAME APPEARS TO BE THE SAME - COMMENTED IT OUT FOR NOW
                                      Sal.psu=if("Sal.psu" %in% names(.)){Sal.psu}else{NA}, #checks if salinity exists, if not, puts in column of NA
                                      TDS.mg.L=if("TDS.mg.L" %in% names(.)){TDS.mg.L}else{NA}, #checks if tds exists, if not, puts in column of NA
                                      ORP.mV=if("ORP.mV" %in% names(.)){ORP.mV}else{if("ORP" %in% names(.)){ORP}else{NA}}, #checks if orp mv exists, if not, puts in column of NA
@@ -140,7 +141,7 @@ for(fileIndex in 1:length(Level0_files)){
                                      Altitude.m=if("Altitude.m" %in% names(.)){Altitude.m}else{NA}, #checks if altitude exists, if not, puts in column of NA
                                      Depth.m=if("Depth.m" %in% names(.)){Depth.m}else{if("DEP.m" %in% names(.)){DEP.m}else{if("Depth" %in% names(.)){as.numeric(Depth)}else{NA}}} #Check if there is depth column in different column headers
                                      )%>%
-                              dplyr::select(-any_of(c("Depth","Pressure.psi.a","Barometer.mmHg","mmHg","X.C","Temp","DO..","DO.","ODO...local","DO.mg.L","DO.mg","C.uS.cm","SPC.uS.cm","Cond","ORP","FNU","Turb","BGA-PC RFU","PC.rfu","PC.ug","TAL.PC.RFU","Chl.RFU","CHL.rfu","CHL.ug","NH4.N.mg.L","NO3.N.mg.L","Cl.mg.L","TSS.mg.L","phycocyaninBGA_RFU","BGA.PE.RFU","BGA.PE.ug.L","fDOM.RFU","fDOM.QSU","DEP.m")))%>% #removes the column if it exists
+                              dplyr::select(-any_of(c("Depth","Pressure.psi.a","Barometer.mmHg","mmHg","X.C","Temp","DO..","DO.","ODO...local","DO.mg.L","DO.mg","C.uS.cm","SPC.uS.cm","Cond","ORP","FNU","Turb","BGA-PC RFU","PC.rfu","PC.ug","TAL.PC.RFU","BGA-PC RFU","PC.rfu","PC.ug","Chl.RFU","CHL.rfu","CHL.ug","NH4.N.mg.L","NO3.N.mg.L","Cl.mg.L","TSS.mg.L","phycocyaninBGA_RFU","BGA.PE.RFU","BGA.PE.ug.L","fDOM.RFU","fDOM.QSU","DEP.m")))%>% #removes the column if it exists
        
                               mutate(Vertical.Position.m=if("Vertical.Position.m" %in% names(.)){Vertical.Position.m}else{if("Depth.m" %in% names(.)){Depth.m}else{NA}})%>% #Check if there is vertical position column and if not, use the depth column that has been previously renamed
                               rename(chlorophyll_RFU=Chlorophyll.RFU, #Rename a number of variables to fit the convention with _ representing the distinction between label and units
@@ -152,6 +153,7 @@ for(fileIndex in 1:length(Level0_files)){
                                      salinity_psu=Sal.psu,
                                      specificConductivity_uSpcm=SpCond.µS.cm,
                                      phycocyaninBGA_RFU=BGA.PC.RFU,
+                                     phycoerythrinTAL_RFU=TAL.PE.RFU,
                                      tds_mgpL=TDS.mg.L,
                                      turbidity_FNU=Turbidity.FNU,
                                      temp_degC=Temp..C,
