@@ -99,9 +99,11 @@ summary3<-profiles2%>%
     Anoxycline_m=Oxycline_threshold(depth.array=depth_m,DO.array=doConcentration_mgpL,threshold=1), #find the first depth where DO is less than or equal to the threshold of 1, NA means no DO values (all NAs) OR no values below threshold
     depthChlMax_m=depthDOmax(depth_vector=depth_m,do_vector=chlorophyll_RFU), #depth of the chlorophyll maximum
     depthBGAMax_m=depthDOmax(depth_vector=depth_m,do_vector=phycocyaninBGA_RFU), #depth of the phycocyanin BGA maximum
+    depthPEMax_m=depthDOmax(depth_vector=depth_m,do_vector=phycoerythrinTAL_RFU), #depth of the phycoerythrin maximum
     ratioMaxBGtochl_RFUperRFU=pigmentRatios(phycocyaninBGA_RFU,chlorophyll_RFU,depth_m), #the ratio of the BG value at its max to the chl value at its max
     epilimnion_chlorophyll_RFU=mean(chlorophyll_RFU[depth_m<=top_metalimnion_m],na.rm=TRUE), #average chlorophyll above the top of the metalimnion
-    epilimnion_phycocyaninBGA_RFU=mean(phycocyaninBGA_RFU[depth_m<=top_metalimnion_m],na.rm=TRUE), #average chlorophyll above the top of the metalimnion
+    epilimnion_phycocyaninBGA_RFU=mean(phycocyaninBGA_RFU[depth_m<=top_metalimnion_m],na.rm=TRUE), #average phycocyanin above the top of the metalimnion
+    epilimnion_phycoerythrinTAL_RFU=mean(phycoerythrinTAL_RFU[depth_m<=top_metalimnion_m],na.rm=TRUE), #average phycocyanin above the top of the metalimnion
     ratioEpiBGtochl_RFUperRFU=epilimnion_phycocyaninBGA_RFU/epilimnion_chlorophyll_RFU, #Ratio of BGA to chl from the average of each above the top of the metalimnion,be warned, sometimes this is negative because one or the other is negative
     hypolimnion_orp_mV=mean(orp_mV[depth_m>=bottom_metalimnion_m],na.rm=TRUE), #average ORP below the metalimnion bottom
     bottom0.5m_orp_mV=mean(orp_mV[depth_m>=(maxDepth_m-0.5)],na.rm=TRUE), #average ORP in the bottom 0.5 m
@@ -155,14 +157,20 @@ for(profile.index in 1:nrow(summary3)){
     theme(panel.grid.major = element_blank(),
           panel.grid.minor = element_blank())
     
-  #GG3: Plot of chl/bga vs. depth####
-  gg3<-ggplot(temp_profile%>%arrange(depth_m)%>%drop_na(chlorophyll_RFU,phycocyaninBGA_RFU),aes(y=depth_m,x=chlorophyll_RFU))+geom_point(color="seagreen3")+geom_path(color="seagreen3")+scale_y_reverse()+ #geom_path to connect in order that data appear in data frame
+  #GG3: Plot of chl/bga/pe vs. depth####
+  gg3<-ggplot(temp_profile%>%arrange(depth_m)%>%drop_na(chlorophyll_RFU,phycocyaninBGA_RFU),aes(y=depth_m,x=chlorophyll_RFU))+
     theme_bw()+
+    scale_y_reverse()+
     labs(x=bquote(Photopigment~(RFU)),y="Depth (m)")+
-    geom_path(aes(x=phycocyaninBGA_RFU),color="turquoise")+
-    geom_point(aes(x=phycocyaninBGA_RFU),color="turquoise")+
     geom_hline(yintercept=c(temp_summary$top_metalimnion_m,temp_summary$thermoclineDepth_m_thresh0.3,temp_summary$bottom_metalimnion_m),color=c("red","purple","blue"))+
-    geom_hline(yintercept=c(temp_summary$depthMaxDOpercentage_m,temp_summary$depthChlMax_m,temp_summary$depthBGAMax_m),color=c("green","seagreen3","turquoise"),size=c(0.5,1.5,1.5))+
+    geom_hline(yintercept=c(temp_summary$depthMaxDOpercentage_m,temp_summary$depthChlMax_m,temp_summary$depthBGAMax_m,temp_summary$depthPEMax_m),color=c("green","seagreen3","turquoise","rosybrown2"),size=c(0.5,1.5,1.5,1.5))+
+    geom_path(color="seagreen3")+ #geom_path to connect in order that data appear in data frame
+    geom_point(fill="seagreen3",shape=21,color="black")+
+    geom_path(aes(x=phycocyaninBGA_RFU),color="turquoise")+
+    geom_point(aes(x=phycocyaninBGA_RFU),fill="turquoise",shape=21,color="black")+
+    geom_path(aes(x=phycoerythrinTAL_RFU),color="rosybrown2")+
+    geom_point(aes(x=phycoerythrinTAL_RFU),fill="rosybrown2",color="black",shape=21)+
+    
     theme(panel.grid.major = element_blank(),
           panel.grid.minor = element_blank())
     
@@ -181,7 +189,7 @@ for(profile.index in 1:nrow(summary3)){
   #Plot them using patchwork####
   gg.4panel<-wrap_plots(List,ncol = 2,nrow = 2)
   print(gg.4panel)
-  ####STOPPED HERE: CONSTRUCT a 4 panel version, then print on multiple page pdf for each year####
+  
 }    
     
 dev.off()    
