@@ -212,6 +212,7 @@ for(fileIndex in 1:length(Level0_files)){
                            salinity_psu=qaqc_bounds(salinity_psu,sensorLimits),
                            specificConductivity_uSpcm=qaqc_bounds(specificConductivity_uSpcm,sensorLimits),
                            phycocyaninBGA_RFU=qaqc_bounds(phycocyaninBGA_RFU,sensorLimits),
+                           phycoerythrinTAL_RFU=qaqc_bounds(phycoerythrinTAL_RFU,sensorLimits),
                            tds_mgpL=qaqc_bounds(tds_mgpL,sensorLimits),
                            turbidity_FNU=qaqc_bounds(turbidity_FNU,sensorLimits),
                            pH=qaqc_bounds(pH,sensorLimits),
@@ -243,7 +244,7 @@ for(fileIndex in 1:length(Level0_files)){
     
     #Remove the differencing columns####
     qaqcProfile<-qaqcProfile%>%dplyr::select(-depthDiff_m,-verticalPositionDiff_m)%>%
-      dplyr::select(MULakeNumber,date,dateTime,depth_m,verticalPosition_m,temp_degC,doConcentration_mgpL,doSaturation_percent,chlorophyll_RFU,phycocyaninBGA_RFU,turbidity_FNU,pH,orp_mV,specificConductivity_uSpcm,salinity_psu,tds_mgpL,waterPressure_barA,latitude,longitude,altitude_m,barometerAirHandheld_mbars)
+      dplyr::select(MULakeNumber,date,dateTime,depth_m,verticalPosition_m,temp_degC,doConcentration_mgpL,doSaturation_percent,chlorophyll_RFU,phycocyaninBGA_RFU,phycoerythrinTAL_RFU,turbidity_FNU,pH,orp_mV,specificConductivity_uSpcm,salinity_psu,tds_mgpL,waterPressure_barA,latitude,longitude,altitude_m,barometerAirHandheld_mbars)
     
     #Check for duplicate depth readings here and in most cases, just take the first reading at each depth####
     if(nrow(qaqcProfile%>%group_by(verticalPosition_m)%>%filter(n()>1))>0){
