@@ -88,6 +88,7 @@ for(fileIndex in 1:nrow(Level0_files_log)){
                          salinity_psu=NA,
                          specificConductivity_uSpcm=NA,
                          phycocyaninBGA_RFU=NA,
+                         phycoerythrinTAL_RFU=NA,
                          tds_mgpL=NA,
                          turbidity_FNU=NA,
                          latitude=NA,
