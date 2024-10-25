@@ -252,7 +252,7 @@ low_temp<-Level1_files_log%>%filter(flag_lowTemps>0)%>%dplyr::select(Level0_prof
           dplyr::select(-depth_m)%>% #drop depth
           rename(depth_m=verticalPosition_m)%>%
           mutate(date=paste(year,month,day,sep="-"))%>% #add in date because it didn't previously exist
-          dplyr::select(MULakeNumber,date,dateTime,depth_m,temp_degC,doConcentration_mgpL,doSaturation_percent,chlorophyll_RFU,phycocyaninBGA_RFU,turbidity_FNU,salinity_psu,specificConductivity_uSpcm,tds_mgpL,orp_mV,pH,latitude,longitude,altitude_m,barometerAirHandheld_mbars)%>%
+          dplyr::select(MULakeNumber,date,dateTime,depth_m,temp_degC,doConcentration_mgpL,doSaturation_percent,chlorophyll_RFU,phycocyaninBGA_RFU,phycoerythrinTAL_RFU,turbidity_FNU,salinity_psu,specificConductivity_uSpcm,tds_mgpL,orp_mV,pH,latitude,longitude,altitude_m,barometerAirHandheld_mbars)%>%
           mutate(dateTime=as.character(dateTime)) #convert dateTime to character to preserve the formatting
     						
     
