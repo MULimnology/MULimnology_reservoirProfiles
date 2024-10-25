@@ -153,6 +153,7 @@ for(fileIndex in 1:length(Level0_files)){
                                      Turbidity.FNU=if("Turbidity.FNU" %in% names(.)){Turbidity.FNU}else{if("FNU" %in% names(.)){FNU}else{if("Turb" %in% names(.)){Turb}else{NA}}}, #Check if there is turbidity in different column headers
                                      Chlorophyll.RFU=if("Chlorophyll.RFU" %in% names(.)){Chlorophyll.RFU}else{if("Chl.RFU" %in% names(.)){Chl.RFU}else{if("CHL.rfu" %in% names(.)){CHL.rfu}else{NA}}}, #Check if there is chl rfu in different column headers
                                      BGA.PC.RFU=if("BGA.PC.RFU" %in% names(.)){BGA.PC.RFU }else{if("BGA-PC RFU" %in% names(.)){`BGA-PC RFU`}else{if("PC.rfu" %in% names(.)){PC.rfu}else{NA}}}, #Check if there is BGA rfu in different column headers: RIGHT NOW THIS COLUMN NAME APPEARS TO BE THE SAME - COMMENTED IT OUT FOR NOW
+                                     TAL.PE.RFU=if("BGA.PE.RFU" %in% names(.)){BGA.PE.RFU }else{if("BGA-PE RFU" %in% names(.)){`BGA-PE RFU`}else{if("PE.rfu" %in% names(.)){PE.rfu}else{if("TAL.PE.RFU" %in% names(.)){TAL.PE.RFU}else{NA}}}}, #Check if there is Phycoerythrin rfu in different column headers: RIGHT NOW THIS COLUMN NAME APPEARS TO BE THE SAME - COMMENTED IT OUT FOR NOW
                                      Sal.psu=if("Sal.psu" %in% names(.)){Sal.psu}else{NA}, #checks if salinity exists, if not, puts in column of NA
                                      TDS.mg.L=if("TDS.mg.L" %in% names(.)){TDS.mg.L}else{NA}, #checks if tds exists, if not, puts in column of NA
                                      ORP.mV=if("ORP.mV" %in% names(.)){ORP.mV}else{if("ORP" %in% names(.)){ORP}else{NA}}, #checks if orp mv exists, if not, puts in column of NA
@@ -173,6 +174,7 @@ for(fileIndex in 1:length(Level0_files)){
                                      salinity_psu=Sal.psu,
                                      specificConductivity_uSpcm=SpCond.µS.cm,
                                      phycocyaninBGA_RFU=BGA.PC.RFU,
+                                     phycoerythrinTAL_RFU=TAL.PE.RFU,
                                      tds_mgpL=TDS.mg.L,
                                      turbidity_FNU=Turbidity.FNU,
                                      temp_degC=Temp..C,
@@ -230,6 +232,7 @@ for(fileIndex in 1:length(Level0_files)){
                            salinity_psu=qaqc_bounds(salinity_psu,sensorLimits),
                            specificConductivity_uSpcm=qaqc_bounds(specificConductivity_uSpcm,sensorLimits),
                            phycocyaninBGA_RFU=qaqc_bounds(phycocyaninBGA_RFU,sensorLimits),
+                           phycoerythrinTAL_RFU=qaqc_bounds(phycoerythrinTAL_RFU,sensorLimits),
                            tds_mgpL=qaqc_bounds(tds_mgpL,sensorLimits),
                            turbidity_FNU=qaqc_bounds(turbidity_FNU,sensorLimits),
                            pH=qaqc_bounds(pH,sensorLimits),
@@ -264,7 +267,7 @@ for(fileIndex in 1:length(Level0_files)){
     
     #Remove the differencing columns####
     qaqcProfile<-qaqcProfile%>%dplyr::select(-depthDiff_m,-verticalPositionDiff_m)%>%
-      dplyr::select(MULakeNumber,date,dateTime,depth_m,verticalPosition_m,temp_degC,doConcentration_mgpL,doSaturation_percent,chlorophyll_RFU,phycocyaninBGA_RFU,turbidity_FNU,pH,orp_mV,specificConductivity_uSpcm,salinity_psu,tds_mgpL,waterPressure_barA,latitude,longitude,altitude_m,barometerAirHandheld_mbars)
+      dplyr::select(MULakeNumber,date,dateTime,depth_m,verticalPosition_m,temp_degC,doConcentration_mgpL,doSaturation_percent,chlorophyll_RFU,phycocyaninBGA_RFU,phycoerythrinTAL_RFU,turbidity_FNU,pH,orp_mV,specificConductivity_uSpcm,salinity_psu,tds_mgpL,waterPressure_barA,latitude,longitude,altitude_m,barometerAirHandheld_mbars)
     
     #Check for duplicate depth readings here and in most cases, just take the first reading at each depth####
     if(nrow(qaqcProfile%>%group_by(verticalPosition_m)%>%filter(n()>1))>0){
