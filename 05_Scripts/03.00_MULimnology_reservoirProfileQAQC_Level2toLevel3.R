@@ -30,7 +30,7 @@ source("05_Scripts/00_MULimnology_reservoirProfileQAQC_Functions.R")
 
 #Read in level 2 files from a particular year####
 #Set years here, update each year here####
-yearIndex<-"2024"
+yearIndex<-"Historical"
   #possible years: c("Historical","2017","2018","2019","2020","2021","2022","2023","2024")
 
 #*Set the directory path here####
@@ -130,7 +130,7 @@ pdf(paste0("06_Outputs/Level3_QAQC_plots_",yearIndex,".pdf"), onefile = TRUE,wid
 #tick through the profiles and graph them in a 4 panel graph####    
 #profile.index<-1
 for(profile.index in 1:nrow(summary3)){
-  temp_summary<-summary3[profile.index,]
+  temp_summary<-summary3[profile.index,]%>%ungroup()
   temp_profile<-profiles2%>%filter(MULakeNumber==temp_summary$MULakeNumber&date==temp_summary$date)
   #GG1: Plot of temp vs. depth####
   gg1<-ggplot(temp_profile%>%arrange(depth_m)%>%drop_na(temp_degC),aes(y=depth_m,x=temp_degC))+geom_point()+geom_path()+scale_y_reverse()+
@@ -168,8 +168,8 @@ for(profile.index in 1:nrow(summary3)){
     geom_point(fill="seagreen3",shape=21,color="black")+
     geom_path(aes(x=phycocyaninBGA_RFU),color="turquoise")+
     geom_point(aes(x=phycocyaninBGA_RFU),fill="turquoise",shape=21,color="black")+
-    geom_path(aes(x=phycoerythrinTAL_RFU),color="rosybrown2")+
-    geom_point(aes(x=phycoerythrinTAL_RFU),fill="rosybrown2",color="black",shape=21)+
+    geom_path(aes(x=as.numeric(phycoerythrinTAL_RFU)),color="rosybrown2")+
+    geom_point(aes(x=as.numeric(phycoerythrinTAL_RFU)),fill="rosybrown2",color="black",shape=21)+
     
     theme(panel.grid.major = element_blank(),
           panel.grid.minor = element_blank())
