@@ -30,7 +30,7 @@ source("05_Scripts/00_MULimnology_reservoirProfileQAQC_Functions.R")
 
 #Read in level 2 files from a particular year####
 #Set years here, update each year here####
-yearIndex<-"Historical"
+yearIndex<-"2024"
   #possible years: c("Historical","2017","2018","2019","2020","2021","2022","2023","2024")
 
 #*Set the directory path here####
@@ -48,6 +48,9 @@ profiles2<-read_csv(file=paste0(dirPath,"/",yearIndex,"_Level2.csv"), col_types 
     profiles2%>%
     group_by(MULakeNumber,date)%>%summarize(count=n())
   
+    #Check list of unique MULake numbers sampled for this month
+    unique(profiles2$MULakeNumber)
+    
 #Stack all the logs together####
 logs2<-read_csv(file=paste0("06_Outputs/",yearIndex,"_QAQC_log.csv"), col_types = cols())
 
