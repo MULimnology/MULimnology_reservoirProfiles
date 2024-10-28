@@ -73,6 +73,7 @@ library(tidyverse)
                         "Dissolved oxygen saturation",
                         "Total Chlorophyll a measured in RFU",
                         "Blue-Green Algae phycocyanin measured in RFU",
+                        "Total Algae phycoerythrin measured in RFU",
                         "Turbidity measured in FNU",
                         "Salinity measured in PSU",
                         "Specific conductivity",
@@ -97,6 +98,7 @@ library(tidyverse)
                    "percent",
                    "RelativeFluorescenceUnits", #Custom
                    "RelativeFluorescenceUnits", #Custom
+                   "RelativeFluorescenceUnits", #Custom
                    "FormazinNephelometricUnits", #Custom
                    "PracticalSalinityUnit", #Custom
                    "microSiemensPerCentimeter", #Custom
@@ -110,7 +112,7 @@ library(tidyverse)
                    )
   
   #*Create the column for the dateTime formats#### 
-  attributeDateTimeFormatString<-c("","YYYY-MM-DD","YYYY-MM-DD hh:mm:ss",rep("",16))
+  attributeDateTimeFormatString<-c("","YYYY-MM-DD","YYYY-MM-DD hh:mm:ss",rep("",17))
   
   #*Create attribute table for the lat/long metadata####
   Level2_attributeTable<-tibble(attributeName=names(temp_level2),
@@ -184,7 +186,7 @@ make_eml(path = "04_EDI/",
          maintenance.description = "complete", 
          user.domain = "EDI",
          user.id = "northr",
-         package.id='edi.1544.1'
+         package.id='edi.1544.2'
          )
 
 ## Step 8: Check your data product! ####
