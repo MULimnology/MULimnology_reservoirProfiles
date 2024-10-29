@@ -1,0 +1,14 @@
+givenName	middleInitial	surName	organizationName	electronicMailAddress	userId	role	projectTitle	fundingAgency	fundingNumber
+John	R.	Jones	University of Missouri	jonesj@missouri.edu	0000-0002-1046-3792	PI	Statewide Lakes Assessment Project (2005-2016)	Missouri Department of Natural Resources	
+John	R.	Jones	University of Missouri	jonesj@missouri.edu	0000-0002-1046-3792	creator			
+Rebecca	L.	North	University of Missouri	northr@missouri.edu	0000-0003-3762-5939	PI	Statewide Lakes Assessment Project (2016-2023)	Missouri Department of Natural Resources	
+Rebecca	L.	North	University of Missouri	northr@missouri.edu	0000-0003-3762-5939	creator			
+Rebecca	L.	North	University of Missouri	northr@missouri.edu	0000-0003-3762-5939	contact			
+Alba		Argerich	University of Missouri	argericha@missouri.edu	0000-0001-6430-0449	creator			
+Alba		Argerich	University of Missouri	argericha@missouri.edu	0000-0001-6430-0449	PI	Statewide Lakes Assessment Project (2018-2022)	Missouri Department of Natural Resources	
+Anthony	P.	Thorpe	University of Missouri	thorpet@missouri.edu		creator			
+Daniel	V.	Obrecht	University of Missouri	ObrechtD@missouri.edu		creator			
+Andrea		Price	University of Missouri	amp4c8@missouri.edu		creator			
+Karen		Santamaria	SUNY New Paltz	santamak1@newpaltz.edu		creator			
+David	C.	Richardson	SUNY New Paltz	richardsond@newpaltz.edu	0000-0001-9374-9624	PI			
+David	C.	Richardson	SUNY New Paltz	richardsond@newpaltz.edu	0000-0001-9374-9624	creator			
