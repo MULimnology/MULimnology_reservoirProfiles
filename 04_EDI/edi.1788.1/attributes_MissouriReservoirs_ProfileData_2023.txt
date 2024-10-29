@@ -8,6 +8,7 @@ doConcentration_mgpL	Dissolved oxygen concentration	numeric	milligramsPerLiter		
 doSaturation_percent	Dissolved oxygen saturation	numeric	percent		NA	MissingValue
 chlorophyll_RFU	Total Chlorophyll a measured in RFU	numeric	RelativeFluorescenceUnits		NA	MissingValue
 phycocyaninBGA_RFU	Blue-Green Algae phycocyanin measured in RFU	numeric	RelativeFluorescenceUnits		NA	MissingValue
+phycoerythrinTAL_RFU	Total Algae phycoerythrin measured in RFU	numeric	RelativeFluorescenceUnits		NA	MissingValue
 turbidity_FNU	Turbidity measured in FNU	numeric	FormazinNephelometricUnits		NA	MissingValue
 salinity_psu	Salinity measured in PSU	numeric	PracticalSalinityUnit		NA	MissingValue
 specificConductivity_uSpcm	Specific conductivity	numeric	microSiemensPerCentimeter		NA	MissingValue

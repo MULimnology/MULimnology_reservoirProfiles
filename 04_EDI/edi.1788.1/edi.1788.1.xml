@@ -1,0 +1,1217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" packageId="edi.1788.1" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd" system="edi">
+  <access authSystem="https://pasta.edirepository.org/authentication" order="allowFirst" scope="document">
+    <allow>
+      <principal>uid=northr,o=EDI,dc=edirepository,dc=org</principal>
+      <permission>all</permission>
+    </allow>
+    <allow>
+      <principal>public</principal>
+      <permission>read</permission>
+    </allow>
+  </access>
+  <dataset>
+    <title>Missouri reservoir profile data including depth, temperature, oxygen, photopigments, conductivity, pH, turbidity, and oxidative-reductive potential starting in 2023</title>
+    <creator>
+      <individualName>
+        <givenName>Rebecca</givenName>
+        <givenName>L.</givenName>
+        <surName>North</surName>
+      </individualName>
+      <organizationName>University of Missouri</organizationName>
+      <electronicMailAddress>northr@missouri.edu</electronicMailAddress>
+      <userId directory="https://orcid.org">https://orcid.org/0000-0003-3762-5939</userId>
+    </creator>
+    <creator>
+      <individualName>
+        <givenName>David</givenName>
+        <givenName>C.</givenName>
+        <surName>Richardson</surName>
+      </individualName>
+      <organizationName>SUNY New Paltz</organizationName>
+      <electronicMailAddress>richardsond@newpaltz.edu</electronicMailAddress>
+      <userId directory="https://orcid.org">https://orcid.org/0000-0001-9374-9624</userId>
+    </creator>
+    <creator>
+      <individualName>
+        <givenName>Andrea</givenName>
+        <surName>Price</surName>
+      </individualName>
+      <organizationName>University of Missouri</organizationName>
+      <electronicMailAddress>amp4c8@missouri.edu</electronicMailAddress>
+    </creator>
+    <pubDate>2024-10-29</pubDate>
+    <abstract>
+      <para>This dataset of annual limnological profiles starts in 2023 and is from reservoirs in the state of Missouri (MO) in the USA collected by the University of Missouri Limnology Lab. Physical parameters derived from sensors include temperature and oxygen with depth. Sondes used were Yellow Springs Instruments (YSI) EXO3s; profiles include a range of physical, chemical, and biological parameters including depth, conductivity, pH, oxidative-reductive potential (ORP), chlorophyll a, phycocyanin (PC), and turbidity. After May 2024, the turbidity sensor was replaced with a phycoerythrin (PE) sensor. Most of the profiles were collected during the summer months (May-September) when the reservoirs were thermally stratified, but a few were taken during the rest of the year (October-April). The majority of profiles were taken at the deepest point in the reservoir directly up-reservoir of the dam. Sampling was conducted from a boat. The bulk of the data come from the Statewide Lake Assessment Project (SLAP), funded by the Missouri Department of Natural Resources. The profiles are divided into single files for each year. This data has been quality controlled for basic errors and any data outside of normal factory issued sensor ranges.   &#13;
+</para>
+    </abstract>
+    <keywordSet>
+      <keyword>limnology</keyword>
+      <keyword>Missouri</keyword>
+      <keyword>reservoirs</keyword>
+      <keyword>stratification</keyword>
+      <keyword>Missouri Statewide Lake Assessment Project</keyword>
+      <keyword>Missouri Department of Natural Resources</keyword>
+      <keyword>MU Limnology Lab</keyword>
+      <keyword>water depth</keyword>
+      <keyword>profiles</keyword>
+      <keyword>North Lab</keyword>
+      <keywordThesaurus>Missouri University limnology controlled vocabulary</keywordThesaurus>
+    </keywordSet>
+    <keywordSet>
+      <keyword>aquatic ecosystems</keyword>
+      <keyword>lakes</keyword>
+      <keyword>freshwater</keyword>
+      <keyword>water temperature</keyword>
+      <keyword>dissolved oxygen</keyword>
+      <keyword>ph</keyword>
+      <keywordThesaurus>lter controlled vocabulary</keywordThesaurus>
+    </keywordSet>
+    <intellectualRights>
+      <para>This information is released under the Creative Commons license - Attribution - CC BY (https://creativecommons.org/licenses/by/4.0/). The consumer of these data (\"Data User\" herein) is required to cite it appropriately in any publication that results from its use. The Data User should realize that these data may be actively used by others for ongoing research and that coordination may be necessary to prevent duplicate publication. The Data User is urged to contact the authors of these data if any questions about methodology or results occur. Where appropriate, the Data User is encouraged to consider collaboration or co-authorship with the authors. The Data User should realize that misinterpretation of data may occur if used out of context of the original study. While substantial efforts are made to ensure the accuracy of data and associated documentation, complete accuracy of data sets cannot be guaranteed. All data are made available \"as is.\" The Data User should be aware, however, that data are updated periodically and it is the responsibility of the Data User to check for new versions of the data. The data authors and the repository where these data were obtained shall not be liable for damages resulting from any use or misinterpretation of the data. Thank you.&#13;
+</para>
+    </intellectualRights>
+    <coverage>
+      <geographicCoverage>
+        <geographicDescription>midwest USA</geographicDescription>
+        <boundingCoordinates>
+          <westBoundingCoordinate>-97.79329</westBoundingCoordinate>
+          <eastBoundingCoordinate>-89.08348</eastBoundingCoordinate>
+          <northBoundingCoordinate>44.22162</northBoundingCoordinate>
+          <southBoundingCoordinate>35.99894</southBoundingCoordinate>
+        </boundingCoordinates>
+      </geographicCoverage>
+      <temporalCoverage>
+        <rangeOfDates>
+          <beginDate>
+            <calendarDate>2023-01-01</calendarDate>
+          </beginDate>
+          <endDate>
+            <calendarDate>2024-12-31</calendarDate>
+          </endDate>
+        </rangeOfDates>
+      </temporalCoverage>
+    </coverage>
+    <maintenance>
+      <description>complete</description>
+    </maintenance>
+    <contact>
+      <individualName>
+        <givenName>Rebecca</givenName>
+        <givenName>L.</givenName>
+        <surName>North</surName>
+      </individualName>
+      <organizationName>University of Missouri</organizationName>
+      <electronicMailAddress>northr@missouri.edu</electronicMailAddress>
+      <userId directory="https://orcid.org">https://orcid.org/0000-0003-3762-5939</userId>
+    </contact>
+    <methods>
+      <methodStep>
+        <description>
+          <para>Profiling equipment: Dissolved oxygen (optical, luminescence; accuracy: ±0.1 mg/L, resolution: 0.01 mg/L) and temperature (accuracy: ±0.01°C, resolution: 0.001°C) profiles were continuous and collected using a Yellow Springs Instrument (YSI) EXO3. In addition, the EXO3 included sensors for: depth (stainless steel strain gauge, resolution: 0.001 m), conductivity (4-electrode nickel cell, resolution: 0.1 microsiemens/cm to 10 microsiemens/cm, range dependent), pH (glass combination electrode, resolution: 0.01), oxidative-reductive potential (ORP, platinum button, resolution: 0.1 mV), chlorophyll a (optical, fluorescence, resolution: 0.01 RFU), phycocyanin (PC, optical, fluorescence, resolution: 0.01 RFU),  phycoerythrin (PE, optical fluorescence, resolution: 0.01 RFU), and turbidity (optical, 90° scatter, resolution: 0.01 FNU). </para>
+          <para>Data quality assurance/quality control (QA/QC): From collection, the data for each profile was carefully QA/QC’ed using automated processes to ensure data quality. First, if the profile had more than 400 readings, the sonde was lowered very slowly with likely replicate readings at different depths. The data, therefore, was averaged across all parameters by 3 second bins. Next, all rows with depths recorded as ≥ 0m were deleted as that would indicate readings from above the water surface. Any profile readings were deleted with a depth difference from one sequential depth to the next of ≤ 0.02 m. This step eliminated locations in the profile where the sensor was pulled upward, was stationary, or had settled at the bottom of the waterbody. All remaining data points were checked for error codes or data outside the sensor bounds as specific by the instrumentation and were converted to NA. Next, all water temperature values were converted to density and densities profiles were checked for any non-monotonically decreasing densities. All temperature values were checked for values that were within the sensor limits but were unrealistic (e.g., &lt; 4.2°C outside of November to April). Those profiles were removed in their entirety. All turbidity, chlorophyll a, phycocyanin, and phycoerythrin fluorescence were checked for large jumps (3x) in the bottom 15% of rows. If there was a large jump in any of those values, the sensor had entered the transition layer at the sediment/water interface consisting of loosely packed colloidal suspensions (“fluffy layer”, Strakhovenko et al. 2020). The rows of data were deleted from the first jump in the bottom 15% of data down to the lowest point. The maximum depth for these profiles is considered the new maximum depth after the preceding QA/QC steps. Any profiles were excluded if there were less than 5 readings in the profile. Each year has a single data file for all profiles taken in that year. We provide metadata (latitude and longitude) of the sampling locations for all reservoirs sampled for this dataset and other reservoirs sampled regularly See Jones et al. (2023) for previous years profile data.</para>
+          <para>Citations:</para>
+          <para>Jones, JR, RL North, A Argerich, AP Thorpe, DV Obrecht, A Price, K Santamaria, and DC Richardson. 2023. Missouri reservoir profile data including temperature, depth, and oxygen profiles (1989-current) ver 1. Environmental Data Initiative. https://doi.org/10.6073/pasta/34d23adf277b07346a35fb8cdc984cc7 (Accessed 2023-12-18).</para>
+          <para>Strakhovenko, V., Subetto, D., Ovdina, E., Danilenko, I., Belkina, N., Efremenko, N., &amp; Maslov, A. 2020. Mineralogical and geochemical composition of Late Holocene bottom sediments of Lake Onego. Journal of Great Lakes Research, 46(3), 443-455.&#13;
+</para>
+        </description>
+      </methodStep>
+    </methods>
+    <project>
+      <title>Statewide Lakes Assessment Project (2023-2025)</title>
+      <personnel>
+        <individualName>
+          <givenName>Rebecca</givenName>
+          <givenName>L.</givenName>
+          <surName>North</surName>
+        </individualName>
+        <organizationName>University of Missouri</organizationName>
+        <electronicMailAddress>northr@missouri.edu</electronicMailAddress>
+        <userId directory="https://orcid.org">https://orcid.org/0000-0003-3762-5939</userId>
+        <role>Principal Investigator</role>
+      </personnel>
+      <funding>Missouri Department of Natural Resources</funding>
+      <relatedProject>
+        <title>No project title to report</title>
+        <personnel>
+          <individualName>
+            <givenName>David</givenName>
+            <givenName>C.</givenName>
+            <surName>Richardson</surName>
+          </individualName>
+          <organizationName>SUNY New Paltz</organizationName>
+          <electronicMailAddress>richardsond@newpaltz.edu</electronicMailAddress>
+          <userId directory="https://orcid.org">https://orcid.org/0000-0001-9374-9624</userId>
+          <role>Principal Investigator</role>
+        </personnel>
+        <funding>No funding to report</funding>
+      </relatedProject>
+    </project>
+    <dataTable>
+      <entityName>MissouriReservoirs_Metadata_SiteData</entityName>
+      <entityDescription>MissouriReservoirs_Metadata_SiteData</entityDescription>
+      <physical>
+        <objectName>MissouriReservoirs_Metadata_SiteData.csv</objectName>
+        <size unit="bytes">20258</size>
+        <authentication method="MD5">23ee375f4560959b512e4beee872936e</authentication>
+        <dataFormat>
+          <textFormat>
+            <numHeaderLines>1</numHeaderLines>
+            <recordDelimiter>\n</recordDelimiter>
+            <attributeOrientation>column</attributeOrientation>
+            <simpleDelimited>
+              <fieldDelimiter>,</fieldDelimiter>
+            </simpleDelimited>
+          </textFormat>
+        </dataFormat>
+      </physical>
+      <attributeList>
+        <attribute>
+          <attributeName>MULakeNumber</attributeName>
+          <attributeDefinition>Missouri University identifier for that lake or reservoir</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Missouri University identifier for that lake or reservoir</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>waterBody</attributeName>
+          <attributeDefinition>Most commonly used name</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Most commonly used name</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>waterBodyLatitude_degree</attributeName>
+          <attributeDefinition>Latitude in decimal degrees</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>degree</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">36.5308</minimum>
+                  <maximum exclusive="false">44.2244262598543</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>waterBodyLongitude_degree</attributeName>
+          <attributeDefinition>Longitude in decimal degrees</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>degree</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-97.7933</minimum>
+                  <maximum exclusive="false">-89.2919</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>notes</attributeName>
+          <attributeDefinition>Notes on locations</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Notes on locations</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+      </attributeList>
+      <numberOfRecords>433</numberOfRecords>
+    </dataTable>
+    <dataTable>
+      <entityName>MissouriReservoirs_ProfileData_2023</entityName>
+      <entityDescription>MissouriReservoirs_ProfileData_2023</entityDescription>
+      <physical>
+        <objectName>MissouriReservoirs_ProfileData_2023.csv</objectName>
+        <size unit="bytes">4941128</size>
+        <authentication method="MD5">2bdf65a7abd87a3d7a9143a1826fc0f1</authentication>
+        <dataFormat>
+          <textFormat>
+            <numHeaderLines>1</numHeaderLines>
+            <recordDelimiter>\n</recordDelimiter>
+            <attributeOrientation>column</attributeOrientation>
+            <simpleDelimited>
+              <fieldDelimiter>,</fieldDelimiter>
+            </simpleDelimited>
+          </textFormat>
+        </dataFormat>
+      </physical>
+      <attributeList>
+        <attribute>
+          <attributeName>MULakeNumber</attributeName>
+          <attributeDefinition>Missouri University identifier for that lake or reservoir</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Missouri University identifier for that lake or reservoir</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>date</attributeName>
+          <attributeDefinition>Date of sampling</attributeDefinition>
+          <storageType>date</storageType>
+          <measurementScale>
+            <dateTime>
+              <formatString>YYYY-MM-DD</formatString>
+              <dateTimeDomain/>
+            </dateTime>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>dateTime</attributeName>
+          <attributeDefinition>Date and time of sampling. All data were collected in the central time zone of the U.S.A., with daylight savings time observed</attributeDefinition>
+          <storageType>date</storageType>
+          <measurementScale>
+            <dateTime>
+              <formatString>YYYY-MM-DD hh:mm:ss</formatString>
+              <dateTimeDomain/>
+            </dateTime>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>depth_m</attributeName>
+          <attributeDefinition>Water depth where sensor reading was measured</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>meter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0</minimum>
+                  <maximum exclusive="false">32.9606666666667</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>temp_degC</attributeName>
+          <attributeDefinition>Water temperature</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0.191</minimum>
+                  <maximum exclusive="false">31.851</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>doConcentration_mgpL</attributeName>
+          <attributeDefinition>Dissolved oxygen concentration</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>milligramsPerLiter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0</minimum>
+                  <maximum exclusive="false">18.08</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>doSaturation_percent</attributeName>
+          <attributeDefinition>Dissolved oxygen saturation</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>percent</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0</minimum>
+                  <maximum exclusive="false">230.3</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>chlorophyll_RFU</attributeName>
+          <attributeDefinition>Total Chlorophyll a measured in RFU</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>RelativeFluorescenceUnits</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-0.15</minimum>
+                  <maximum exclusive="false">46.38</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>phycocyaninBGA_RFU</attributeName>
+          <attributeDefinition>Blue-Green Algae phycocyanin measured in RFU</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>RelativeFluorescenceUnits</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-0.343333333333333</minimum>
+                  <maximum exclusive="false">23.09</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>phycoerythrinTAL_RFU</attributeName>
+          <attributeDefinition>Total Algae phycoerythrin measured in RFU</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>RelativeFluorescenceUnits</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>natural</numberType>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>turbidity_FNU</attributeName>
+          <attributeDefinition>Turbidity measured in FNU</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>FormazinNephelometricUnits</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0</minimum>
+                  <maximum exclusive="false">527.34</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>salinity_psu</attributeName>
+          <attributeDefinition>Salinity measured in PSU</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>PracticalSalinityUnit</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0</minimum>
+                  <maximum exclusive="false">0.3</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>specificConductivity_uSpcm</attributeName>
+          <attributeDefinition>Specific conductivity</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>microSiemensPerCentimeter</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">1.7</minimum>
+                  <maximum exclusive="false">618.3</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>tds_mgpL</attributeName>
+          <attributeDefinition>Total dissolved solids</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>milligramsPerLiter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">1</minimum>
+                  <maximum exclusive="false">402</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>orp_mV</attributeName>
+          <attributeDefinition>Oxidation Reduction Potential</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>millivolt</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-465.1</minimum>
+                  <maximum exclusive="false">270.833333333333</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>pH</attributeName>
+          <attributeDefinition>pH - potential of hydrogen</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">6.37</minimum>
+                  <maximum exclusive="false">9.76</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>latitude</attributeName>
+          <attributeDefinition>Latitude measured on the sonde handheld during sampling</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>degree</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">36.6069</minimum>
+                  <maximum exclusive="false">44.22485</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>longitude</attributeName>
+          <attributeDefinition>Longitude measured on the sonde handheld during sampling</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>degree</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-95.13322</minimum>
+                  <maximum exclusive="false">-90.28542</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>altitude_m</attributeName>
+          <attributeDefinition>Altitude measured on the sonde handheld during sampling</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>meter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0</minimum>
+                  <maximum exclusive="false">383.866666666667</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>barometerAirHandheld_mbars</attributeName>
+          <attributeDefinition>Air barometer pressure measured on the sonde handheld during sampling</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>millibar</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">967.6</minimum>
+                  <maximum exclusive="false">1005.6</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+      </attributeList>
+      <numberOfRecords>27324</numberOfRecords>
+    </dataTable>
+    <dataTable>
+      <entityName>MissouriReservoirs_ProfileData_2024</entityName>
+      <entityDescription>MissouriReservoirs_ProfileData_2024</entityDescription>
+      <physical>
+        <objectName>MissouriReservoirs_ProfileData_2024.csv</objectName>
+        <size unit="bytes">4816346</size>
+        <authentication method="MD5">1ec23f6424c9dd770afb91c3c0dd2879</authentication>
+        <dataFormat>
+          <textFormat>
+            <numHeaderLines>1</numHeaderLines>
+            <recordDelimiter>\n</recordDelimiter>
+            <attributeOrientation>column</attributeOrientation>
+            <simpleDelimited>
+              <fieldDelimiter>,</fieldDelimiter>
+            </simpleDelimited>
+          </textFormat>
+        </dataFormat>
+      </physical>
+      <attributeList>
+        <attribute>
+          <attributeName>MULakeNumber</attributeName>
+          <attributeDefinition>Missouri University identifier for that lake or reservoir</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Missouri University identifier for that lake or reservoir</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>date</attributeName>
+          <attributeDefinition>Date of sampling</attributeDefinition>
+          <storageType>date</storageType>
+          <measurementScale>
+            <dateTime>
+              <formatString>YYYY-MM-DD</formatString>
+              <dateTimeDomain/>
+            </dateTime>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>dateTime</attributeName>
+          <attributeDefinition>Date and time of sampling. All data were collected in the central time zone of the U.S.A., with daylight savings time observed</attributeDefinition>
+          <storageType>date</storageType>
+          <measurementScale>
+            <dateTime>
+              <formatString>YYYY-MM-DD hh:mm:ss</formatString>
+              <dateTimeDomain/>
+            </dateTime>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>depth_m</attributeName>
+          <attributeDefinition>Water depth where sensor reading was measured</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>meter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0</minimum>
+                  <maximum exclusive="false">57.355</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>temp_degC</attributeName>
+          <attributeDefinition>Water temperature</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">5.62433333333333</minimum>
+                  <maximum exclusive="false">32.746</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>doConcentration_mgpL</attributeName>
+          <attributeDefinition>Dissolved oxygen concentration</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>milligramsPerLiter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0</minimum>
+                  <maximum exclusive="false">19.6866666666667</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>doSaturation_percent</attributeName>
+          <attributeDefinition>Dissolved oxygen saturation</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>percent</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0</minimum>
+                  <maximum exclusive="false">251.333333333333</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>chlorophyll_RFU</attributeName>
+          <attributeDefinition>Total Chlorophyll a measured in RFU</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>RelativeFluorescenceUnits</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-0.17</minimum>
+                  <maximum exclusive="false">16.12</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>phycocyaninBGA_RFU</attributeName>
+          <attributeDefinition>Blue-Green Algae phycocyanin measured in RFU</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>RelativeFluorescenceUnits</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-0.366666666666667</minimum>
+                  <maximum exclusive="false">17.3066666666667</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>phycoerythrinTAL_RFU</attributeName>
+          <attributeDefinition>Total Algae phycoerythrin measured in RFU</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>RelativeFluorescenceUnits</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-1.93</minimum>
+                  <maximum exclusive="false">61.78</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>turbidity_FNU</attributeName>
+          <attributeDefinition>Turbidity measured in FNU</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>FormazinNephelometricUnits</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0.266666666666667</minimum>
+                  <maximum exclusive="false">105.003333333333</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>salinity_psu</attributeName>
+          <attributeDefinition>Salinity measured in PSU</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>PracticalSalinityUnit</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0.05</minimum>
+                  <maximum exclusive="false">0.25</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>specificConductivity_uSpcm</attributeName>
+          <attributeDefinition>Specific conductivity</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>microSiemensPerCentimeter</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">103.9</minimum>
+                  <maximum exclusive="false">515.266666666667</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>tds_mgpL</attributeName>
+          <attributeDefinition>Total dissolved solids</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>milligramsPerLiter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">67.3333333333333</minimum>
+                  <maximum exclusive="false">335</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>orp_mV</attributeName>
+          <attributeDefinition>Oxidation Reduction Potential</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>millivolt</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-190.1</minimum>
+                  <maximum exclusive="false">290.1</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>pH</attributeName>
+          <attributeDefinition>pH - potential of hydrogen</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">6.44</minimum>
+                  <maximum exclusive="false">9.65</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>latitude</attributeName>
+          <attributeDefinition>Latitude measured on the sonde handheld during sampling</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>degree</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">36.5956333333333</minimum>
+                  <maximum exclusive="false">40.4977</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>longitude</attributeName>
+          <attributeDefinition>Longitude measured on the sonde handheld during sampling</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>degree</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-95.13311</minimum>
+                  <maximum exclusive="false">-60.1906</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>altitude_m</attributeName>
+          <attributeDefinition>Altitude measured on the sonde handheld during sampling</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>meter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">106.166666666667</minimum>
+                  <maximum exclusive="false">389.033333333333</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>barometerAirHandheld_mbars</attributeName>
+          <attributeDefinition>Air barometer pressure measured on the sonde handheld during sampling</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>millibar</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">962.355555555556</minimum>
+                  <maximum exclusive="false">1008.08888888889</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NA</code>
+            <codeExplanation>MissingValue</codeExplanation>
+          </missingValueCode>
+        </attribute>
+      </attributeList>
+      <numberOfRecords>21257</numberOfRecords>
+    </dataTable>
+  </dataset>
+  <additionalMetadata>
+    <metadata>
+      <unitList>
+        <unit id="microSiemensPerCentimeter" multiplierToSI="0.001" name="microSiemensPerCentimeter" parentSI="siemensPerCentimeter" unitType="conductance">
+          <description>Electrical conductance for lower conductivity</description>
+        </unit>
+        <unit id="RelativeFluorescenceUnits" multiplierToSI="" name="RelativeFluorescenceUnits" parentSI="" unitType="dimensionless">
+          <description>measurement of the relative amount of fluorescence excitation detected in response to particular wavelength of light</description>
+        </unit>
+        <unit id="FormazinNephelometricUnits" multiplierToSI="" name="FormazinNephelometricUnits" parentSI="" unitType="dimensionless">
+          <description>measures scattered light at 90 degrees from the incident light beam with an infrared light source according to the ISO 7027</description>
+        </unit>
+        <unit id="PracticalSalinityUnit" multiplierToSI="1" name="PracticalSalinityUnit" parentSI="gramsPerLiter" unitType="salinity">
+          <description>measure of conductivity at a constant pressure and temperature that is about equivalent to ppt</description>
+        </unit>
+      </unitList>
+    </metadata>
+  </additionalMetadata>
+  <additionalMetadata>
+    <metadata>
+      <emlEditor>
+        <app>EMLassemblyline</app>
+        <release>3.5.5</release>
+      </emlEditor>
+    </metadata>
+  </additionalMetadata>
+</eml:eml>
