@@ -5,7 +5,7 @@ Rebecca	L.	North	University of Missouri	northr@missouri.edu	0000-0003-3762-5939	
 Rebecca	L.	North	University of Missouri	northr@missouri.edu	0000-0003-3762-5939	creator			
 Rebecca	L.	North	University of Missouri	northr@missouri.edu	0000-0003-3762-5939	contact			
 Alba		Argerich	University of Missouri	argericha@missouri.edu	0000-0001-6430-0449	creator			
-Alba		Argerich	University of Missouri	argericha@missouri.edu	0000-0001-6430-0449	PI	Statewide Lakes Assessment Project (2018-2022)	Missouri Department of Natural Resources	
+Alba		Argerich	University of Missouri	argericha@missouri.edu	0000-0001-6430-0449	PI	Statewide Lakes Assessment Project (2018-2021)	Missouri Department of Natural Resources	
 Anthony	P.	Thorpe	University of Missouri	thorpet@missouri.edu		creator			
 Daniel	V.	Obrecht	University of Missouri	ObrechtD@missouri.edu		creator			
 Andrea		Price	University of Missouri	amp4c8@missouri.edu		creator			
