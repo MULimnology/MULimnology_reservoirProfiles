@@ -125,7 +125,7 @@ summary3<-profiles2%>%
       mutate(buoyancyfrequency_1_s2=ifelse(numberOfMeasurements_temperature<4,NA,buoyancyfrequency_1_s2)) #Remove buoyancy frequencies if there is less than 4 temperature measurements
       
 #Export the level3 summary file####
-write_csv(summary3,file=paste0("03_Level3_Data/",yearIndex,"_Level3.csv"))
+level3<-write_csv(summary3,file=paste0("03_Level3_Data/",yearIndex,"_Level3.csv"))
 
 #Export as a page per####
 pdf(paste0("06_Outputs/Level3_QAQC_plots_",yearIndex,".pdf"), onefile = TRUE,width=8.5,height=11)
