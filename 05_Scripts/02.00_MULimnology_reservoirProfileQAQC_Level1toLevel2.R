@@ -260,6 +260,8 @@ for(fileIndex in 1:length(Level1_files)){
   #Look for any row with any of the flag columns greater than 5####
   #check_df<-Level1_files_log%>%filter(if_any(flag_lowTemps:flag_jumps_barometerAirHandheld_mbars,~.>5))%>%print(n=Inf)
   
+  #HERE IS AN ADDED COMMENT
+  
   #Print out how many profiles were modified or removed####
   Level1_files_log%>%filter(Level1to2_some_depths_removed=="yes")%>%nrow()
   Level1_files_log%>%filter(Level1to2_profileRemoved=="yes")%>%nrow()
