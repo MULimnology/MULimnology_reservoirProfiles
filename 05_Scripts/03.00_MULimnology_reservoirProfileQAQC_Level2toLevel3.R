@@ -30,7 +30,7 @@ source("05_Scripts/00_MULimnology_reservoirProfileQAQC_Functions.R")
 
 #Read in level 2 files from a particular year####
 #Set years here, update each year here####
-yearIndex<-"2024"
+yearIndex<-"Historical"
   #possible years: c("Historical","2017","2018","2019","2020","2021","2022","2023","2024")
 
 #*Set the directory path here####
@@ -71,6 +71,7 @@ logs2<-read_csv(file=paste0("06_Outputs/",yearIndex,"_QAQC_log.csv"), col_types 
 summary3<-profiles2%>%
   group_by(MULakeNumber,date)%>%
   summarize(
+    dateTime=mean(dateTime,na.rm=TRUE), #average dateTime
     minDepth_m=min(depth_m,na.rm=TRUE), #smallest depth
     maxDepth_m=max(depth_m,na.rm=TRUE), #deepest depth
     numberOfMeasurements_temperature=as.numeric(sum(!is.na(temp_degC))), #number of temperature measurements
@@ -125,7 +126,7 @@ summary3<-profiles2%>%
       mutate(buoyancyfrequency_1_s2=ifelse(numberOfMeasurements_temperature<4,NA,buoyancyfrequency_1_s2)) #Remove buoyancy frequencies if there is less than 4 temperature measurements
       
 #Export the level3 summary file####
-level3<-write_csv(summary3,file=paste0("03_Level3_Data/",yearIndex,"_Level3.csv"))
+write_csv(summary3,file=paste0("03_Level3_Data/",yearIndex,"_Level3.csv"))
 
 #Export as a page per####
 pdf(paste0("06_Outputs/Level3_QAQC_plots_",yearIndex,".pdf"), onefile = TRUE,width=8.5,height=11)
