@@ -36,7 +36,7 @@ Level3_allData<-do.call(bind_rows, List_Level3)
 
 ############################Lat log matching#####################
 #Read in lat/long data#####
-latlongMetadata<-read_csv("07_MiscFiles/MissouriReservoir_Metadata_SiteData.csv")%>%mutate(MULakeNumber=as.character(sprintf("%03d", MULakeNumber)))%>%mutate(notes=NA)
+latlongMetadata<-read_csv("07_MiscFiles/MissouriReservoir_Metadata_SiteData_full.csv")%>%mutate(notes=NA)
 
 #Find the unique list of the Level3 data####
 #Take the mean of lat and long
@@ -53,8 +53,12 @@ Extras<-handheldLatLong%>%
 #Stack and sort the two lat/longs, export the file####
 combined_LatLong<-bind_rows(latlongMetadata,Extras)%>%arrange(MULakeNumber)
 
+#Export the handheld data to 07_MiscFiles folder####
+write_csv(x=handheldLatLong,file="07_MiscFiles/MissouriReservoir_ProfileLatLongCompiled.csv")
+
 #Export the file to 07_MiscFiles folder####
 write_csv(x=combined_LatLong,file="07_MiscFiles/MissouriReservoir_Metadata_SiteData_full.csv")
+
 
 ###################################################################################
 
