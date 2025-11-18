@@ -24,7 +24,7 @@ library(stringr)
 source("05_Scripts/00_MULimnology_reservoirProfileQAQC_Functions.R")
 
 #Set year here####
-year<-2024
+year<-2025
 
 #Read in the sensor limits file####
 sensorLimits<-read_csv("00_Level0_Data/MissouriReservoirs-YSI_EXO3_SensorLimits.csv")
@@ -82,7 +82,7 @@ Level0_files_log<-tibble(Level0_profiles=Level0_files,Level0to1_done="No",Level0
 
 
 #***This 1 can be subbed in with the new file index from the log####
-    #Debug fileIndex<-82
+    #Debug fileIndex<-3
     #Debug: fileIndex 
     #       Level0_files_log$Level0_profiles[fileIndex]
 for(fileIndex in 1:length(Level0_files)){
@@ -111,37 +111,39 @@ for(fileIndex in 1:length(Level0_files)){
     #This also decaps the first bunch of rows to start with row skip_rows
     #The file encoding is necessary because there are some odd characters in the file that need to be bypassed
      readProfile<-tibble(read.csv(file=paste0(dirPath,"/",Level0_files_log$Level0_profiles[fileIndex]),skip=skip_rows,fileEncoding=fileEncoding_set))%>%
-                                mutate(Time..HH.mm.ss.=if('Time..HH.mm.ss.'%in% colnames(.)){Time..HH.mm.ss.}else{if('Time..HH.MM.SS.'%in% colnames(.)){Time..HH.MM.SS.}else{if('Time'%in% colnames(.)){Time}else{"12:00:00"}}})%>% #Create a Time variable that selects from any of the column headers... if nothing exists, then assign 12:00
-                                dplyr::select(-any_of(c("Time..HH.MM.SS.","Time")))%>%
-                                mutate(Date..MM.DD.YYYY.=if('Date..MM.DD.YYYY.'%in% colnames(.)){Date..MM.DD.YYYY.}else{if('Date'%in% colnames(.)){Date}else{paste0(Level0_files_log$month[fileIndex],"/", Level0_files_log$day[fileIndex],"/", Level0_files_log$year[fileIndex])}})%>% #Create a Time variable that selects from any of the column headers... if nothing exists, then assign 12:00
-                                dplyr::select(-any_of(c("Date")))%>%
+                                mutate(Time..HH.mm.ss.=if('Time..HH.mm.ss.'%in% colnames(.)){Time..HH.mm.ss.}else{if('Time..HH.MM.SS.'%in% colnames(.)){Time..HH.MM.SS.}else{if('Time'%in% colnames(.)){Time}else{if('TIME..HH.MM.SS.'%in% colnames(.)){TIME..HH.MM.SS.}else{"12:00:00"}}}})%>% #Create a Time variable that selects from any of the column headers... if nothing exists, then assign 12:00
+                                dplyr::select(-any_of(c("Time..HH.MM.SS.","Time","TIME..HH.MM.SS.")))%>%
+                                mutate(Date..MM.DD.YYYY.=if('Date..MM.DD.YYYY.'%in% colnames(.)){Date..MM.DD.YYYY.}else{if('Date'%in% colnames(.)){Date}else{if('DATE..MM.DD.YYYY.'%in% colnames(.)){DATE..MM.DD.YYYY.}else{paste0(Level0_files_log$month[fileIndex],"/", Level0_files_log$day[fileIndex],"/", Level0_files_log$year[fileIndex])}}})%>% #Create a Time variable that selects from any of the column headers... if nothing exists, then assign 12:00
+                                dplyr::select(-any_of(c("Date","DATE..MM.DD.YYYY.")))%>%
                                 mutate(date=mdy(Date..MM.DD.YYYY.),  #Convert date to date, time to time, merge to a dateTime variable####
                                       dateTime=ymd_hms(paste(date,Time..HH.mm.ss.,sep=" ")),
                                       MULakeNumber=strsplit(Level0_files_log$Level0_profiles[fileIndex],'_')[[1]][1], #Extract the MULakeNumber from the file name
                                       )%>%
-                              dplyr::select(-any_of(c("Site","Unit.ID","User.ID","Site.Name","Chlorophyll.ug.L","Chl.ug.L","BGA.PC.ug.L","pH.mV","Battery.V","Cable.Pwr.V","Date..MM.DD.YYYY.","Time..HH.mm.ss.","Time..Fract..Sec.","nLF.Cond.µS.cm","Cond.µS.cm")))%>% #get rid of a number of unneccessary columns
+                              dplyr::select(-any_of(c("FILE.NAME","Site","Unit.ID","User.ID","Site.Name","Chlorophyll.ug.L","Chl.ug.L","BGA.PC.ug.L","pH.mV","Battery.V","Cable.Pwr.V","Date..MM.DD.YYYY.","Time..HH.mm.ss.","Time..Fract..Sec.","nLF.Cond.µS.cm","Cond.µS.cm")))%>% #get rid of a number of unneccessary columns
                               #Here is where units/column names can be corrected####
-                              mutate(Pressure.bar.a=if("Pressure.bar.a" %in% names(.)){Pressure.bar.a}else{if("Pressure.psi.a" %in% names(.)){Pressure.psi.a/14.696}else{NA}}, #Check if there is pressure with different units and convert if it is in psi
-                                     Barometer.mbars=if("Barometer.mbars" %in% names(.)){Barometer.mbars}else{if("Barometer.mmHg" %in% names(.)){Barometer.mmHg/0.75}else{if("mmHg" %in% names(.)){mmHg/0.75}else{NA}}} #Check if there is hand held pressure with different units and convert if it is in mmHg 
+                              mutate(Pressure.bar.a=if("Pressure.bar.a" %in% names(.)){Pressure.bar.a}else{if("Pressure.psi.a" %in% names(.)){Pressure.psi.a/14.696}else{if("PRESSURE.PSI.A" %in% names(.)){PRESSURE.PSI.A/14.696}else{NA}}}, #Check if there is pressure with different units and convert if it is in psi
+                                     Barometer.mbars=if("Barometer.mbars" %in% names(.)){Barometer.mbars}else{if("Barometer.mmHg" %in% names(.)){Barometer.mmHg/0.75}else{if("mmHg" %in% names(.)){mmHg/0.75}else{if("BAROMETER.MMHG" %in% names(.)){BAROMETER.MMHG/0.75}else{NA}}}} #Check if there is hand held pressure with different units and convert if it is in mmHg 
                                       )%>% 
                               #Here is sorting out all the different column names and making sure they are captured####
-                              mutate(Temp..C=if("Temp..C" %in% names(.)){Temp..C}else{if("X.C" %in% names(.)){X.C}else{if("Temp" %in% names(.)){Temp}else{NA}}}, #Check if there is temperature in different column headers
-                                     ODO...sat=if("ODO...sat" %in% names(.)){ODO...sat}else{if("DO.." %in% names(.)){DO..}else{if("DO." %in% names(.)){DO.}else{NA}}}, #Check if there is DO in different column headers
-                                     ODO.mg.L=if("ODO.mg.L" %in% names(.)){ODO.mg.L}else{if("DO.mg.L" %in% names(.)){DO.mg.L}else{if("DO.mg" %in% names(.)){DO.mg}else{NA}}}, #Check if there is DO sat in different column headers
-                                     SpCond.µS.cm=if("SpCond.µS.cm" %in% names(.)){SpCond.µS.cm}else{if("C.uS.cm" %in% names(.)){C.uS.cm}else{if("SPC.uS.cm" %in% names(.)){SPC.uS.cm}else{if("Cond" %in% names(.)){Cond}else{NA}}}}, #Check if there is Specific conductivity in different column headers
-                                     Turbidity.FNU=if("Turbidity.FNU" %in% names(.)){Turbidity.FNU}else{if("FNU" %in% names(.)){FNU}else{if("Turb" %in% names(.)){Turb}else{NA}}}, #Check if there is turbidity in different column headers
-                                     Chlorophyll.RFU=if("Chlorophyll.RFU" %in% names(.)){Chlorophyll.RFU}else{if("Chl.RFU" %in% names(.)){Chl.RFU}else{if("CHL.rfu" %in% names(.)){CHL.rfu}else{NA}}}, #Check if there is chl rfu in different column headers
-                                     BGA.PC.RFU=if("BGA.PC.RFU" %in% names(.)){BGA.PC.RFU }else{if("BGA-PC RFU" %in% names(.)){`BGA-PC RFU`}else{if("PC.rfu" %in% names(.)){PC.rfu}else{if("TAL.PC.RFU" %in% names(.)){TAL.PC.RFU}else{NA}}}}, #Check if there is BGA rfu in different column headers: RIGHT NOW THIS COLUMN NAME APPEARS TO BE THE SAME - COMMENTED IT OUT FOR NOW
-                                     TAL.PE.RFU=if("BGA.PE.RFU" %in% names(.)){BGA.PE.RFU }else{if("BGA-PE RFU" %in% names(.)){`BGA-PE RFU`}else{if("PE.rfu" %in% names(.)){PE.rfu}else{if("TAL.PE.RFU" %in% names(.)){TAL.PE.RFU}else{NA}}}}, #Check if there is Phycoerythrin rfu in different column headers: RIGHT NOW THIS COLUMN NAME APPEARS TO BE THE SAME - COMMENTED IT OUT FOR NOW
-                                     Sal.psu=if("Sal.psu" %in% names(.)){Sal.psu}else{NA}, #checks if salinity exists, if not, puts in column of NA
-                                     TDS.mg.L=if("TDS.mg.L" %in% names(.)){TDS.mg.L}else{NA}, #checks if tds exists, if not, puts in column of NA
-                                     ORP.mV=if("ORP.mV" %in% names(.)){ORP.mV}else{if("ORP" %in% names(.)){ORP}else{NA}}, #checks if orp mv exists, if not, puts in column of NA
-                                     GPS.Latitude..=if("GPS.Latitude.." %in% names(.)){GPS.Latitude..}else{NA}, #checks if latitude exists, if not, puts in column of NA
-                                     GPS.Longitude..=if("GPS.Longitude.." %in% names(.)){GPS.Longitude..}else{NA}, #checks if longitude exists, if not, puts in column of NA
-                                     Altitude.m=if("Altitude.m" %in% names(.)){Altitude.m}else{NA}, #checks if altitude exists, if not, puts in column of NA
-                                     Depth.m=if("Depth.m" %in% names(.)){Depth.m}else{if("DEP.m" %in% names(.)){DEP.m}else{if("Depth" %in% names(.)){as.numeric(Depth)}else{NA}}} #Check if there is depth column in different column headers
+                              mutate(Temp..C=if("Temp..C" %in% names(.)){Temp..C}else{if("X.C" %in% names(.)){X.C}else{if("Temp" %in% names(.)){Temp}else{if("TEMP..C" %in% names(.)){TEMP..C}else{NA}}}}, #Check if there is temperature in different column headers
+                                     ODO...sat=if("ODO...sat" %in% names(.)){ODO...sat}else{if("DO.." %in% names(.)){DO..}else{if("DO." %in% names(.)){DO.}else{if("ODO...SAT" %in% names(.)){ODO...SAT}else{NA}}}}, #Check if there is DO in different column headers
+                                     ODO.mg.L=if("ODO.mg.L" %in% names(.)){ODO.mg.L}else{if("DO.mg.L" %in% names(.)){DO.mg.L}else{if("DO.mg" %in% names(.)){DO.mg}else{if("ODO.MG.L" %in% names(.)){ODO.MG.L}else{NA}}}}, #Check if there is DO sat in different column headers
+                                     SpCond.µS.cm=if("SpCond.µS.cm" %in% names(.)){SpCond.µS.cm}else{if("C.uS.cm" %in% names(.)){C.uS.cm}else{if("SPC.uS.cm" %in% names(.)){SPC.uS.cm}else{if("Cond" %in% names(.)){Cond}else{if("SPCOND.µS.CM" %in% names(.)){SPCOND.µS.CM}else{NA}}}}}, #Check if there is Specific conductivity in different column headers
+                                     Turbidity.FNU=if("Turbidity.FNU" %in% names(.)){Turbidity.FNU}else{if("FNU" %in% names(.)){FNU}else{if("Turb" %in% names(.)){Turb}else{if("turbidity_FNU" %in% names(.)){turbidity_FNU}else{NA}}}}, #Check if there is turbidity in different column headers
+                                     Chlorophyll.RFU=if("Chlorophyll.RFU" %in% names(.)){Chlorophyll.RFU}else{if("Chl.RFU" %in% names(.)){Chl.RFU}else{if("CHL.rfu" %in% names(.)){CHL.rfu}else{if("CHLOROPHYLL.RFU" %in% names(.)){CHLOROPHYLL.RFU}else{NA}}}}, #Check if there is chl rfu in different column headers
+                                     phycocyanin.BGA.PC.RFU=if("BGA.PC.RFU" %in% names(.)){BGA.PC.RFU }else{if("BGA-PC RFU" %in% names(.)){`BGA-PC RFU`}else{if("PC.rfu" %in% names(.)){PC.rfu}else{if("TAL.PC.RFU" %in% names(.)){TAL.PC.RFU}else{NA}}}}, #Check if there is BGA rfu in different column headers: RIGHT NOW THIS COLUMN NAME APPEARS TO BE THE SAME - COMMENTED IT OUT FOR NOW
+                                     phycoerythrin.TAL.PE.RFU=if("BGA.PE.RFU" %in% names(.)){BGA.PE.RFU }else{if("BGA-PE RFU" %in% names(.)){`BGA-PE RFU`}else{if("PE.rfu" %in% names(.)){PE.rfu}else{if("TAL.PE.RFU" %in% names(.)){TAL.PE.RFU}else{NA}}}}, #Check if there is Phycoerythrin rfu in different column headers: RIGHT NOW THIS COLUMN NAME APPEARS TO BE THE SAME - COMMENTED IT OUT FOR NOW
+                                     Sal.psu=if("Sal.psu" %in% names(.)){Sal.psu}else{if("SAL.PSU" %in% names(.)){SAL.PSU}else{NA}}, #checks if salinity exists, if not, puts in column of NA
+                                     TDS.mg.L=if("TDS.mg.L" %in% names(.)){TDS.mg.L}else{if("TDS.MG.L" %in% names(.)){TDS.MG.L}else{NA}}, #checks if tds exists, if not, puts in column of NA
+                                     ORP.mV=if("ORP.mV" %in% names(.)){ORP.mV}else{if("ORP" %in% names(.)){ORP}else{if("ORP.MV" %in% names(.)){ORP.MV}else{NA}}}, #checks if orp mv exists, if not, puts in column of NA
+                                     GPS.Latitude..=if("GPS.Latitude.." %in% names(.)){GPS.Latitude..}else{if("GPS.LATITUDE.." %in% names(.)){GPS.LATITUDE..}else{NA}}, #checks if latitude exists, if not, puts in column of NA
+                                     GPS.Longitude..=if("GPS.Longitude.." %in% names(.)){GPS.Longitude..}else{if("GPS.LONGITUDE.." %in% names(.)){GPS.LONGITUDE..}else{NA}}, #checks if longitude exists, if not, puts in column of NA
+                                     Altitude.m=if("Altitude.m" %in% names(.)){Altitude.m}else{if("ALTITUDE.M" %in% names(.)){ALTITUDE.M}else{NA}}, #checks if altitude exists, if not, puts in column of NA
+                                     Depth.m=if("Depth.m" %in% names(.)){Depth.m}else{if("DEP.m" %in% names(.)){DEP.m}else{if("Depth" %in% names(.)){as.numeric(Depth)}else{if("DEPTH.M" %in% names(.)){DEPTH.M}else{NA}}}}, #Check if there is depth column in different column headers
+                                     pH=if("PH" %in% names(.)){PH}else{if("pH" %in% names(.)){pH}else{NA}} #Check if there is depth column in different column headers
                                      )%>%
-                              dplyr::select(-any_of(c("Depth","Pressure.psi.a","Barometer.mmHg","mmHg","X.C","Temp","DO..","DO.","ODO...local","DO.mg.L","DO.mg","C.uS.cm","SPC.uS.cm","Cond","ORP","FNU","Turb","BGA-PC RFU","PC.rfu","PC.ug","TAL.PC.RFU","BGA-PC RFU","PC.rfu","PC.ug","Chl.RFU","CHL.rfu","CHL.ug","NH4.N.mg.L","NO3.N.mg.L","Cl.mg.L","TSS.mg.L","phycocyaninBGA_RFU","BGA.PE.RFU","BGA.PE.ug.L","fDOM.RFU","fDOM.QSU","DEP.m")))%>% #removes the column if it exists
+                              #dplyr::select(-PH)%>% #drop PH original
+                              #dplyr::select(-any_of(c("Depth","DEPTH.M","PRESSURE.PSI.A","Pressure.psi.a","BAROMETER.MMHG","Barometer.mmHg","mmHg","TEMP..C","X.C","Temp","ODO.MG.L","DO..","DO.","ODO...local","DO.mg.L","DO.mg","ODO...SAT","C.uS.cm","SPC.uS.cm","Cond","ORP","FNU","Turb","BGA-PC RFU","PC.rfu","PC.ug","TAL.PC.RFU","BGA-PC RFU","PC.rfu","PC.ug","Chl.RFU","CHL.rfu","CHL.ug","NH4.N.mg.L","NO3.N.mg.L","Cl.mg.L","TSS.mg.L","phycocyaninBGA_RFU","BGA.PE.RFU","BGA.PE.ug.L","fDOM.RFU","fDOM.QSU","DEP.m")))%>% #removes the column if it exists
        
                               mutate(Vertical.Position.m=if("Vertical.Position.m" %in% names(.)){Vertical.Position.m}else{if("Depth.m" %in% names(.)){Depth.m}else{NA}})%>% #Check if there is vertical position column and if not, use the depth column that has been previously renamed
                               rename(chlorophyll_RFU=Chlorophyll.RFU, #Rename a number of variables to fit the convention with _ representing the distinction between label and units
@@ -152,8 +154,8 @@ for(fileIndex in 1:length(Level0_files)){
                                      waterPressure_barA=Pressure.bar.a, #barA is absolute pressure where absolute zero is its zero point; bar(g) is gauge pressure that uses atmopsheric pressure as its zero point
                                      salinity_psu=Sal.psu,
                                      specificConductivity_uSpcm=SpCond.µS.cm,
-                                     phycocyaninBGA_RFU=BGA.PC.RFU,
-                                     phycoerythrinTAL_RFU=TAL.PE.RFU,
+                                     phycocyaninBGA_RFU=phycocyanin.BGA.PC.RFU,
+                                     phycoerythrinTAL_RFU=phycoerythrin.TAL.PE.RFU,
                                      tds_mgpL=TDS.mg.L,
                                      turbidity_FNU=Turbidity.FNU,
                                      temp_degC=Temp..C,
@@ -161,11 +163,36 @@ for(fileIndex in 1:length(Level0_files)){
                                      latitude=GPS.Latitude..,
                                      longitude=GPS.Longitude..,
                                      altitude_m=Altitude.m,
-                                     barometerAirHandheld_mbars=Barometer.mbars 
+                                     barometerAirHandheld_mbars=Barometer.mbars
+                                  
                                      )%>%
                           mutate(depthDiff_m=c(99,diff(depth_m)), #Create a depth difference column that represents the difference of the depths for each consecutive reading, set the first reading to 99, it will be kept
                                  verticalPositionDiff_m=c(99,diff(verticalPosition_m)) #Create a depth difference column that represents the difference of the depths for each consecutive reading, set the first reading to 99, it will be kept
-                                 )
+                                 )%>%
+                          dplyr::select(date,
+                                        dateTime,
+                                        MULakeNumber,
+                                        waterPressure_barA,
+                                        barometerAirHandheld_mbars,
+                                        temp_degC,doSaturation_percent,
+                                        doConcentration_mgpL,
+                                        specificConductivity_uSpcm,
+                                        turbidity_FNU,
+                                        chlorophyll_RFU,
+                                        phycocyaninBGA_RFU,
+                                        phycoerythrinTAL_RFU,
+                                        salinity_psu,
+                                        tds_mgpL,
+                                        orp_mV,
+                                        latitude,
+                                        longitude,
+                                        altitude_m,
+                                        depth_m,
+                                        pH,
+                                        verticalPosition_m,
+                                        depthDiff_m,
+                                        verticalPositionDiff_m
+                                        ) #Select only the new columns at the end
      
      #Store the number of rows in the log####
      Level0_files_log$nrow_original_Level0[fileIndex]<-nrow(readProfile)
@@ -177,12 +204,15 @@ for(fileIndex in 1:length(Level0_files)){
        readProfile<-readProfile%>%
          mutate(dateTime_Round=round_date(dateTime,"3 seconds"))%>%
          group_by(dateTime_Round)%>%
-         summarise_each(funs(mean(., na.rm = TRUE)))%>%
+         summarise(across(where(is.numeric),~mean(., na.rm = TRUE)), #if it is numeric, then take the average
+                   across(where(is.logical),~first(.)))%>% #if it is logical and then pull the first value (NA)
          #recalculate the depthDiff
          mutate(depthDiff_m=c(diff(depth_m),0), #Create a depth difference column that represents the difference of the depths for each consecutive reading
                 verticalPositionDiff_m=c(diff(verticalPosition_m),0) #Create a depth difference column that represents the difference of the depths for each consecutive reading
          )%>%
-         mutate(MULakeNumber=Level0_files_log$MULakeNumber[fileIndex]) #replace the MULakeNumber from the log
+         mutate(MULakeNumber=Level0_files_log$MULakeNumber[fileIndex])%>% #replace the MULakeNumber from the log
+         rename(dateTime=dateTime_Round)%>%
+         mutate(date=as.Date(dateTime))
      }else{} #do nothing
      
      #Store the number of rows after this averaging to see if it is reduced in size in the log####
@@ -242,6 +272,12 @@ for(fileIndex in 1:length(Level0_files)){
       #*level 1 directory####
       level1_dir<-paste0("01_Level1_Data/",year,"_Level1_Data/")
     
+    # Check if the folder exists
+    if (!file.exists(paste0(level1_dir))) {
+      # If the file does not exist, create it
+      dir.create(paste0(level1_dir))
+    }
+    
     #Remove the differencing columns####
     qaqcProfile<-qaqcProfile%>%dplyr::select(-depthDiff_m,-verticalPositionDiff_m)%>%
       dplyr::select(MULakeNumber,date,dateTime,depth_m,verticalPosition_m,temp_degC,doConcentration_mgpL,doSaturation_percent,chlorophyll_RFU,phycocyaninBGA_RFU,phycoerythrinTAL_RFU,turbidity_FNU,pH,orp_mV,specificConductivity_uSpcm,salinity_psu,tds_mgpL,waterPressure_barA,latitude,longitude,altitude_m,barometerAirHandheld_mbars)
@@ -254,6 +290,8 @@ for(fileIndex in 1:length(Level0_files)){
         dplyr::select(MULakeNumber:depth_m,verticalPosition_m,temp_degC:barometerAirHandheld_mbars) #Put the columns back in order
     }
       
+    
+    
     
     #Write out Level1 csv in the file####
     write_csv(qaqcProfile,file=paste0(level1_dir,Level0_files_log$Level1FileName[fileIndex]))

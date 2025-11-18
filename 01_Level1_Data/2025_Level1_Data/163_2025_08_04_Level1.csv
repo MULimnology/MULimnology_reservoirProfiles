@@ -1,0 +1,2 @@
+MULakeNumber,date,dateTime,depth_m,verticalPosition_m,temp_degC,doConcentration_mgpL,doSaturation_percent,chlorophyll_RFU,phycocyaninBGA_RFU,phycoerythrinTAL_RFU,turbidity_FNU,pH,orp_mV,specificConductivity_uSpcm,salinity_psu,tds_mgpL,waterPressure_barA,latitude,longitude,altitude_m,barometerAirHandheld_mbars
+163,2025-08-04,2025-08-04T13:33:36Z,2.604,2.604,25.021,0.56,6.8,0.42,0.91,0.62,NA,7.34,197.9,277.4,0.13,180,0.25129286880783885,40.02137,-94.43673,282.7,985.4666666666667
