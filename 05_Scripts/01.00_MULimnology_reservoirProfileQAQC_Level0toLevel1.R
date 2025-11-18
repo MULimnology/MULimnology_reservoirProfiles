@@ -111,7 +111,7 @@ for(fileIndex in 1:length(Level0_files)){
     #This also decaps the first bunch of rows to start with row skip_rows
     #The file encoding is necessary because there are some odd characters in the file that need to be bypassed
      readProfile<-tibble(read.csv(file=paste0(dirPath,"/",Level0_files_log$Level0_profiles[fileIndex]),skip=skip_rows,fileEncoding=fileEncoding_set))%>%
-                                mutate(Time..HH.mm.ss.=if('Time..HH.mm.ss.'%in% colnames(.)){Time..HH.mm.ss.}else{if('Time..HH.MM.SS.'%in% colnames(.)){Time..HH.MM.SS.}else{if('Time'%in% colnames(.)){Time}else{if('TIME..HH.MM.SS.'%in% colnames(.)){TIME..HH.MM.SS.}else{"12:00:00"}}}})%>% #Create a Time variable that selects from any of the column headers... if nothing exists, then assign 12:00
+                                mutate(Time..HH.mm.ss.=if('Time..HH.mm.ss.'%in% colnames(.)){Time..HH.mm.ss.}else{if('Time..HH.MM.SS.'%in% colnames(.)){Time..HH.MM.SS.}else{if('Time'%in% colnames(.)){Time}else{if('TIME..HH.MM.SS.'%in% colnames(.)){TIME..HH.MM.SS.}else{if('TIME..h.mm.ss.tt.'%in% colnames(.)){TIME..h.mm.ss.tt.}else{"12:00:00"}}}}})%>% #Create a Time variable that selects from any of the column headers... if nothing exists, then assign 12:00
                                 dplyr::select(-any_of(c("Time..HH.MM.SS.","Time","TIME..HH.MM.SS.")))%>%
                                 mutate(Date..MM.DD.YYYY.=if('Date..MM.DD.YYYY.'%in% colnames(.)){Date..MM.DD.YYYY.}else{if('Date'%in% colnames(.)){Date}else{if('DATE..MM.DD.YYYY.'%in% colnames(.)){DATE..MM.DD.YYYY.}else{paste0(Level0_files_log$month[fileIndex],"/", Level0_files_log$day[fileIndex],"/", Level0_files_log$year[fileIndex])}}})%>% #Create a Time variable that selects from any of the column headers... if nothing exists, then assign 12:00
                                 dplyr::select(-any_of(c("Date","DATE..MM.DD.YYYY.")))%>%
@@ -166,6 +166,7 @@ for(fileIndex in 1:length(Level0_files)){
                                      barometerAirHandheld_mbars=Barometer.mbars
                                   
                                      )%>%
+                          arrange(depth_m)%>% #sort by depth to go from top to bottom
                           mutate(depthDiff_m=c(99,diff(depth_m)), #Create a depth difference column that represents the difference of the depths for each consecutive reading, set the first reading to 99, it will be kept
                                  verticalPositionDiff_m=c(99,diff(verticalPosition_m)) #Create a depth difference column that represents the difference of the depths for each consecutive reading, set the first reading to 99, it will be kept
                                  )%>%
