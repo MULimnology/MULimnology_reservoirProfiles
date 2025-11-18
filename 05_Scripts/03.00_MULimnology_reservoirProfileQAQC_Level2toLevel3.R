@@ -30,8 +30,8 @@ source("05_Scripts/00_MULimnology_reservoirProfileQAQC_Functions.R")
 
 #Read in level 2 files from a particular year####
 #Set years here, update each year here####
-yearIndex<-"2024"
-  #possible years: c("Historical","2017","2018","2019","2020","2021","2022","2023","2024")
+yearIndex<-"2025"
+  #possible years: c("Historical","2017","2018","2019","2020","2021","2022","2023","2024","2025")
 
 #*Set the directory path here####
 dirPath<-paste0("02_Level2_Data/")
@@ -86,6 +86,7 @@ summary3<-profiles2%>%
     metalimnionDensityGradient_kgperm3perm=densityGradientAcrossMetalimnion(Depth_vector=depth_m,Temp_vector = temp_degC,meta_top =top_metalimnion_m,meta_bottom = bottom_metalimnion_m), #Function that calculates the water density gradient from the temperate at the top of the metalimnion relative to the bottom correcting for distance between those two measurements######
     epiToHypoDensityGradient_kgperm3perm=densityGradientAcrossEpiToHypo(maxDepth_m=maxDepth_m,epilimnion_temp_degC=epilimnion_temp_degC,hypolimnion_temp_degC=hypolimnion_temp_degC,meta_top =top_metalimnion_m,meta_bottom = bottom_metalimnion_m), #Function that calculates the water density gradient from average epilimnion temperature relative to the bottom, correcting for the distance between the midpoints of the two layers######
     buoyancyfrequency_1_s2=max(buoyancy.freq(wtr=temp_degC,depths=depth_m),na.rm=TRUE), #generate the maximum buoyancy frequency using rLakeAnalyzer buoyancy frequency vector
+    mixingDepth_m=ifelse(!is.na(meta.depths(wtr=temp_degC,depths=depth_m)[1]),meta.depths(wtr=temp_degC,depths=depth_m)[1],max(depth_m,na.rm=TRUE)), #mixing depth is max depth if the metalimnion top is NA, otherwise metalimnion top
     numberOfMeasurements_do=as.numeric(sum(!is.na(doConcentration_mgpL))), #number of depth measurements
     minDO_mgpL=minDO(doConcentration_mgpL), #lowest DO concentration
     maxDO_mgpL=maxDO(doConcentration_mgpL), #highest DO concentration
