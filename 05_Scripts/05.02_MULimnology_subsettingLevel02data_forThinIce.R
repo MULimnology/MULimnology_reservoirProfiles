@@ -6,11 +6,13 @@
 if (!require(tidyverse)) {install.packages("tidyverse")}
 if (!require(lubridate)) {install.packages("lubridate")}
 if (!require(stringr)) {install.packages("stringr")}
+if (!require(hms)) {install.packages("hms")}
 
 #Load packages
 library(tidyverse)
 library(lubridate)
 library(stringr)
+library(hms) #to get out time neatly
 
 #Run functions script to upload all the user defined functions####
 source("05_Scripts/00_MULimnology_reservoirProfileQAQC_Functions.R")
@@ -46,7 +48,12 @@ ThinIceSplit<-Level2_allData%>%
 #Loop through all the profiles####
 #ThinIceProfile.index<-1
 for(ThinIceProfile.index in 1:length(ThinIceSplit)){
-  temp.df<-ThinIceSplit[[ThinIceProfile.index]]
+  temp.df<-ThinIceSplit[[ThinIceProfile.index]]%>%
+            mutate(`date_yyyy-mm-dd`=date,
+                   time_hhmmss=as_hms(dateTime)
+            )%>%
+            dplyr::select(-dateTime,-date)%>%
+            dplyr::select(MULakeNumber,`date_yyyy-mm-dd`,time_hhmmss,everything())
   #Get out the MULakeNumber####
   MULakeNumber<-temp.df$MULakeNumber[1]
   
@@ -60,9 +67,9 @@ for(ThinIceProfile.index in 1:length(ThinIceSplit)){
   }
   
   #Generate the file name
-  year<-year(temp.df$date)[1]
-  month<-sprintf("%02d",month(temp.df$date)[1])
-  day<-sprintf("%02d",day(temp.df$date)[1])
+  year<-year(temp.df$`date_yyyy-mm-dd`)[1]
+  month<-sprintf("%02d",month(temp.df$`date_yyyy-mm-dd`)[1])
+  day<-sprintf("%02d",day(temp.df$`date_yyyy-mm-dd`)[1])
     #*File name####
     file.name<-paste(MULakeNumber,year,month,day,"profile.csv",sep="_")
   #Paste out the profile  
@@ -71,24 +78,3 @@ for(ThinIceProfile.index in 1:length(ThinIceSplit)){
 }
 
 
-########################Figure out the distributions of the depths for each lake####################
-#Get teh unique list of sites####
-uniqueLakeNumbers<-sort(unique(Level3_allData$MULakeNumber))
-
-#Lake.index=1
-#Export a histogram of the maxdepth for each profile by site as a page####
-pdf(paste0("06_Outputs/Level3_MaxDepth_plots.pdf"), onefile = TRUE,width=8.5,height=11)
-
-#Go through all the lakes####
-#lake.index=1
-for(lake.index in 1:length(uniqueLakeNumbers)){
-  temp<-Level3_allData%>%filter(MULakeNumber==uniqueLakeNumbers[lake.index]) #Extract the data just for that lake
-  gg.temp<-ggplot(data=temp,aes(x=maxDepth_m))+geom_histogram()+labs(title=paste0("MULakeNumber: ",uniqueLakeNumbers[lake.index])) #create the histogram plot####
-  print(gg.temp)
-}
-
-dev.off()
-
-#Check 149####
-Level3_allData%>%filter(MULakeNumber%in%uniqueLakeNumbers[which(substr(uniqueLakeNumbers,1,3)=="149")])%>%print(n=Inf)
-####
