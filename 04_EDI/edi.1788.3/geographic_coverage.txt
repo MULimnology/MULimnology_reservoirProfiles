@@ -1,2 +1,2 @@
 geographicDescription	westBoundingCoordinate	eastBoundingCoordinate	northBoundingCoordinate	southBoundingCoordinate
-midwest USA	-97.79329	-89.08348	44.22162	35.99894
+midwest USA	-95.76416015625	-89.08348083496094	44.22457019238308	35.998939514160156
