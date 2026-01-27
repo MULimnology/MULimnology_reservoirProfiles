@@ -1,5 +1,4 @@
 MULakeNumber,date,dateTime,depth_m,verticalPosition_m,temp_degC,doConcentration_mgpL,doSaturation_percent,chlorophyll_RFU,phycocyaninBGA_RFU,phycoerythrinTAL_RFU,turbidity_FNU,pH,orp_mV,specificConductivity_uSpcm,salinity_psu,tds_mgpL,waterPressure_barA,latitude,longitude,altitude_m,barometerAirHandheld_mbars
-186,2022-06-01,2022-06-01T13:08:03Z,0.157,0.137,25.362,10.41,126.8,4.16,0.88,NA,6.78,8.87,15.9,129.3,0.06,84,0.015,NA,NA,NA,979
 186,2022-06-01,2022-06-01T13:08:05Z,0.1,0.123,25.463,10.43,127.3,4.28,0.99,NA,6.96,8.87,16.1,129.3,0.06,84,0.01,NA,NA,NA,979
 186,2022-06-01,2022-06-01T13:08:06Z,0.149,0.172,25.449,10.44,127.4,4.24,0.99,NA,6.89,8.87,16.3,129.3,0.06,84,0.015,NA,NA,NA,978.9
 186,2022-06-01,2022-06-01T13:08:07Z,0.208,0.235,25.421,10.45,127.5,4.33,1.02,NA,6.88,8.87,16.4,129.4,0.06,84,0.02,NA,NA,NA,978.8
