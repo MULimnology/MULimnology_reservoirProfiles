@@ -82,7 +82,7 @@ Level0_files_log<-tibble(Level0_profiles=Level0_files,Level0to1_done="No",Level0
 
 
 #***This 1 can be subbed in with the new file index from the log####
-    #Debug fileIndex<-4
+    #Debug fileIndex<-325
     #Debug: fileIndex 
     #       Level0_files_log$Level0_profiles[fileIndex]
 for(fileIndex in 1:length(Level0_files)){
@@ -113,7 +113,7 @@ for(fileIndex in 1:length(Level0_files)){
                       "219_2018_05_17.csv","219_2018_05_31.csv","219_2018_06_14.csv","219_2018_06_28.csv","219_2018_07_12.csv","219_2018_07_27.csv",
                       "219_2018_08_01.csv","219_2018_08_10.csv","219_2018_09_07.csv","219_2018_09_21.csv","219_2018_10_19.csv","219_2018_11_02.csv",
                       "219_2018_11_19.csv","219_2018_11_30.csv","219_2018_12_17.csv","438_2018_06_22.csv","438_2018_07_13.csv","438_2018_08_17.csv",
-                      "438_2018_09_25.csv","440_2018_06_15.csv","440_2018_07_20.csv","440_2018_08_03.csv")
+                      "438_2018_09_25.csv","440_2018_06_15.csv","440_2018_07_20.csv","440_2018_08_03.csv","438_2018_10_26.csv")
     #Read in files differentially for 2018 vs. other years####
     if(!(Level0_files_log$Level0_profiles[fileIndex]%in%files_nocommas)){
       readProfile<-tibble(read.csv(file=paste0(dirPath,"/",Level0_files_log$Level0_profiles[fileIndex]),skip=skip_rows,fileEncoding=fileEncoding_set,row.names=NULL))
@@ -257,8 +257,8 @@ for(fileIndex in 1:length(Level0_files)){
     Level0_files_log$longitude[fileIndex]<-mean(qaqcProfile$longitude,na.rm=TRUE)
     Level0_files_log$altitude_m[fileIndex]<-mean(qaqcProfile$altitude_m,na.rm=TRUE)
     Level0_files_log$barometerAirHandheld_mbars[fileIndex]<-mean(qaqcProfile$barometerAirHandheld_mbars,na.rm=TRUE)
-    Level0_files_log$doConcentration_mgpL_bottom[fileIndex]<-readProfile$doConcentration_mgpL[length(readProfile$doConcentration_mgpL)]
-    Level0_files_log$doConcentration_mgpL_bottom5mean[fileIndex]<-mean(readProfile$doConcentration_mgpL[(length(readProfile$doConcentration_mgpL)-5):length(readProfile$doConcentration_mgpL)],na.rm=TRUE)
+    Level0_files_log$doConcentration_mgpL_bottom[fileIndex]<-qaqcProfile$doConcentration_mgpL[length(qaqcProfile$doConcentration_mgpL)]
+    Level0_files_log$doConcentration_mgpL_bottom5mean[fileIndex]<-mean(qaqcProfile$doConcentration_mgpL[ifelse(length(qaqcProfile$doConcentration_mgpL)<=5,1,(length(qaqcProfile$doConcentration_mgpL)-5)):length(qaqcProfile$doConcentration_mgpL)],na.rm=TRUE)
     Level0_files_log$nrow_Level1[fileIndex]<-nrow(qaqcProfile)    #Store number of rows in qaqcProfile    
               
     #Print each file to level1####
