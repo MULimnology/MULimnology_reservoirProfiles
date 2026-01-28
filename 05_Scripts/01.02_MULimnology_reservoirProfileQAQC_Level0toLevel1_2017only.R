@@ -248,8 +248,8 @@ for(fileIndex in 1:length(Level0_files)){
     Level0_files_log$longitude[fileIndex]<-mean(qaqcProfile$longitude,na.rm=TRUE)
     Level0_files_log$altitude_m[fileIndex]<-mean(qaqcProfile$altitude_m,na.rm=TRUE)
     Level0_files_log$barometerAirHandheld_mbars[fileIndex]<-mean(qaqcProfile$barometerAirHandheld_mbars,na.rm=TRUE)
-    Level0_files_log$doConcentration_mgpL_bottom[fileIndex]<-readProfile$doConcentration_mgpL[length(readProfile$doConcentration_mgpL)]
-    Level0_files_log$doConcentration_mgpL_bottom5mean[fileIndex]<-mean(readProfile$doConcentration_mgpL[(length(readProfile$doConcentration_mgpL)-5):length(readProfile$doConcentration_mgpL)],na.rm=TRUE)
+    Level0_files_log$doConcentration_mgpL_bottom[fileIndex]<-qaqcProfile$doConcentration_mgpL[length(qaqcProfile$doConcentration_mgpL)]
+    Level0_files_log$doConcentration_mgpL_bottom5mean[fileIndex]<-mean(qaqcProfile$doConcentration_mgpL[ifelse(length(qaqcProfile$doConcentration_mgpL)<=5,1,(length(qaqcProfile$doConcentration_mgpL)-5)):length(qaqcProfile$doConcentration_mgpL)],na.rm=TRUE)
     Level0_files_log$nrow_Level1[fileIndex]<-nrow(qaqcProfile)    #Store number of rows in qaqcProfile    
               
     #Print each file to level1####

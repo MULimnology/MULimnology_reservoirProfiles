@@ -15,6 +15,6 @@ temp_degC,-5,50,
 verticalPosition_m,-1,100,
 latitude,30,50,89.9999
 longitude,-100,-70,180
-altitude_m,0,4000,
+altitude_m,10,4000,
 barometerAirHandheld_mbars,499.9575,1099.9065,
 phycoerythrinTAL_RFU,-10,100,
