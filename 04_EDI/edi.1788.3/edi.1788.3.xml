@@ -40,7 +40,7 @@
       <organizationName>University of Missouri</organizationName>
       <electronicMailAddress>amp4c8@missouri.edu</electronicMailAddress>
     </creator>
-    <pubDate>2026-01-18</pubDate>
+    <pubDate>2026-01-28</pubDate>
     <abstract>
       <para>This dataset of annual limnological profiles starts in 2023 and is from reservoirs in the state of Missouri (MO) in the USA collected by the University of Missouri Limnology Lab. Physical parameters derived from sensors include temperature and oxygen with depth. Sondes used were Yellow Springs Instruments (YSI) EXO3s; profiles include a range of physical, chemical, and biological parameters including depth, conductivity, pH, oxidative-reductive potential (ORP), chlorophyll a, phycocyanin (PC), and turbidity. After May 2024, the turbidity sensor was replaced with a phycoerythrin (PE) sensor. Most of the profiles were collected during the summer months (May-September) when the reservoirs were thermally stratified, but a few were taken during the rest of the year (October-April). The majority of profiles were taken at the deepest point in the reservoir directly up-reservoir of the dam. Sampling was conducted from a boat. The bulk of the data come from the Statewide Lake Assessment Project (SLAP), funded by the Missouri Department of Natural Resources. The profiles are divided into single files for each year. This data has been quality controlled for basic errors and any data outside of normal factory issued sensor ranges.   &#13;
 </para>
@@ -152,8 +152,8 @@
       <entityDescription>MissouriReservoirs_Metadata_SiteData</entityDescription>
       <physical>
         <objectName>MissouriReservoirs_Metadata_SiteData.csv</objectName>
-        <size unit="bytes">8954</size>
-        <authentication method="MD5">d4f7e1a396f550af6eb00aab607d8175</authentication>
+        <size unit="bytes">8323</size>
+        <authentication method="MD5">ce3a5382b3ba1d93cdd036ee57bacbe0</authentication>
         <dataFormat>
           <textFormat>
             <numHeaderLines>1</numHeaderLines>
@@ -291,7 +291,7 @@
               <numericDomain>
                 <numberType>real</numberType>
                 <bounds>
-                  <minimum exclusive="false">-95.1331617995722</minimum>
+                  <minimum exclusive="false">-95.1331618</minimum>
                   <maximum exclusive="false">-90.28</maximum>
                 </bounds>
               </numericDomain>
@@ -321,15 +321,15 @@
           </missingValueCode>
         </attribute>
       </attributeList>
-      <numberOfRecords>108</numberOfRecords>
+      <numberOfRecords>107</numberOfRecords>
     </dataTable>
     <dataTable>
       <entityName>MissouriReservoirs_ProfileData_2023</entityName>
       <entityDescription>MissouriReservoirs_ProfileData_2023</entityDescription>
       <physical>
         <objectName>MissouriReservoirs_ProfileData_2023.csv</objectName>
-        <size unit="bytes">4973436</size>
-        <authentication method="MD5">215436f803af914c2ff037c8338341dd</authentication>
+        <size unit="bytes">4970704</size>
+        <authentication method="MD5">9db00a63cba281ad764b4fd62ef9283b</authentication>
         <dataFormat>
           <textFormat>
             <numHeaderLines>1</numHeaderLines>
@@ -652,7 +652,7 @@
                 <numberType>real</numberType>
                 <bounds>
                   <minimum exclusive="false">-465.1</minimum>
-                  <maximum exclusive="false">270.833333333333</maximum>
+                  <maximum exclusive="false">289.4</maximum>
                 </bounds>
               </numericDomain>
             </ratio>
@@ -778,15 +778,15 @@
           </missingValueCode>
         </attribute>
       </attributeList>
-      <numberOfRecords>27459</numberOfRecords>
+      <numberOfRecords>27447</numberOfRecords>
     </dataTable>
     <dataTable>
       <entityName>MissouriReservoirs_ProfileData_2024</entityName>
       <entityDescription>MissouriReservoirs_ProfileData_2024</entityDescription>
       <physical>
         <objectName>MissouriReservoirs_ProfileData_2024.csv</objectName>
-        <size unit="bytes">6315077</size>
-        <authentication method="MD5">abe244f3ff1a7dc89f5452dd6cfcc3b0</authentication>
+        <size unit="bytes">6347772</size>
+        <authentication method="MD5">d3e527f577220bf532064ca888955b5a</authentication>
         <dataFormat>
           <textFormat>
             <numHeaderLines>1</numHeaderLines>
@@ -1159,7 +1159,7 @@
                 <numberType>real</numberType>
                 <bounds>
                   <minimum exclusive="false">36.5956333333333</minimum>
-                  <maximum exclusive="false">44.22398</maximum>
+                  <maximum exclusive="false">44.22498</maximum>
                 </bounds>
               </numericDomain>
             </ratio>
@@ -1182,7 +1182,7 @@
                 <numberType>real</numberType>
                 <bounds>
                   <minimum exclusive="false">-95.13311</minimum>
-                  <maximum exclusive="false">-60.1906</maximum>
+                  <maximum exclusive="false">-90.28589</maximum>
                 </bounds>
               </numericDomain>
             </ratio>
@@ -1239,15 +1239,15 @@
           </missingValueCode>
         </attribute>
       </attributeList>
-      <numberOfRecords>29343</numberOfRecords>
+      <numberOfRecords>29515</numberOfRecords>
     </dataTable>
     <dataTable>
       <entityName>MissouriReservoirs_ProfileData_2025</entityName>
       <entityDescription>MissouriReservoirs_ProfileData_2025</entityDescription>
       <physical>
         <objectName>MissouriReservoirs_ProfileData_2025.csv</objectName>
-        <size unit="bytes">5964385</size>
-        <authentication method="MD5">ed1994a923c315441e0ae68ea9a108b6</authentication>
+        <size unit="bytes">5964369</size>
+        <authentication method="MD5">746ee76a11cbffbb719dfc890bd505c4</authentication>
         <dataFormat>
           <textFormat>
             <numHeaderLines>1</numHeaderLines>
@@ -1639,7 +1639,7 @@
                 <numberType>real</numberType>
                 <bounds>
                   <minimum exclusive="false">-95.1334333333333</minimum>
-                  <maximum exclusive="false">-60.4187866666667</maximum>
+                  <maximum exclusive="false">-90.28278</maximum>
                 </bounds>
               </numericDomain>
             </ratio>
