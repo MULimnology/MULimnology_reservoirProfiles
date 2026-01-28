@@ -49,8 +49,8 @@ library(tidyverse)
 #Create files and attribute tables for all level 2 data####
   #*Identify all the individual .csv files####
   Level2_files<-list.files("02_Level2_Data/",pattern = "*.csv")
-  #Keep only 2022 and before by eliminating 2023 and 2024####
-  Level2_files<-Level2_files[!(Level2_files%in%c("2023_Level2.csv","2024_Level2.csv"))]
+  #Keep only 2022 and before by eliminating 2023 and beyond####
+  Level2_files<-Level2_files[Level2_files%in%c("Historical_Level2.csv",paste(c(2017:2022),"_Level2.csv",sep=""))]
   #Set the year - this will be in the for loop####
   #file.index<-5
   for(file.index in 1:length(Level2_files)){
