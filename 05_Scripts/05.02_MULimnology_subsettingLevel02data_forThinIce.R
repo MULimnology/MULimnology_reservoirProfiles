@@ -28,8 +28,8 @@ List_Level2<-list()
 
 #Loop through all the level3 files and load them individually####
 #debug fileIndex<-1
-#This goes from 8 to 9 - 2024 and 2025, expand out for next year
-for(fileIndex in 8:9){
+#This goes from 8 to 10 - 2024 and 2025 and 2026, expand out for next year
+for(fileIndex in 8:10){
   List_Level2[[fileIndex]]<-read_csv(file=paste0(dirPath,Level2_files[fileIndex]), col_types = cols()) #last argument suppresses the message on input about column types, helpful for mass upload
 }
 
